@@ -1,0 +1,47 @@
+#include "winresrc.h"
+
+#define IDR_KEY_E				E
+#define IDR_KEY_D				D
+#define IDR_KEY_N				N
+
+IDR_KEY_E		RSAKEYS		DISCARDABLE		"resources\\rsakey.e.dat"
+IDR_KEY_D		RSAKEYS		DISCARDABLE		"resources\\rsakey.d.dat"
+IDR_KEY_N		RSAKEYS		DISCARDABLE		"resources\\rsakey.n.dat"
+
+// English (U.K.) resources
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+#endif
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,4,0
+ PRODUCTVERSION 1,0,4,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080904b0"
+        BEGIN
+            VALUE "FileDescription", "AccessData CodeMeter Dongle Emulator\0"
+            VALUE "FileVersion", "1.04\0"
+            VALUE "InternalName", "moduleWibuCm32\0"
+            VALUE "LegalCopyright", "Copyright thewd, thewd@hotmail.com\0"
+            VALUE "OriginalFilename", "WibuCm32.dll/WibuCm64.dll\0"
+            VALUE "ProductName", "AccessData CodeMeter Dongle Emulator\0"
+            VALUE "ProductVersion", "1.04\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x809, 1200
+    END
+END

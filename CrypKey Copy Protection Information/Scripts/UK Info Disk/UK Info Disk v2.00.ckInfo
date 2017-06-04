@@ -1,0 +1,13 @@
+#Default Script (ckInfo)
+
+ScriptName=UK Info Disk v2.00
+
+Action=CreateSiteKey
+UserKey=C81A E76D 3742 F5EC E862 D2
+NumberOfLicences=10
+NetworkLicence=yes
+AddToExistingLicence=no
+EasyLicence=no
+LicenceDuration=unlimited
+KeyOptions=0
+KeyLevel=0

@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View Site Key Example - 4
+
+Action=ViewSiteKey
+SiteKey=F740 1573 196C B127 F931 83B7 68

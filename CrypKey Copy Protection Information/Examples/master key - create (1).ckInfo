@@ -1,0 +1,8 @@
+#Default Script (ckInfo)
+
+ScriptName=Create Master Key Example - 1
+
+Action=CreateMasterKey
+AccountNumber=0
+ApplicationId=1
+Filename=example.exe

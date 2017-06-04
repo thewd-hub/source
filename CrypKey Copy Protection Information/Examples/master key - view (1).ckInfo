@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View Master Key Example - 1
+
+Action=ViewMasterKey
+MasterKey=2A5D 57C4 1B4C 135B F09E 17F7 600B 2D70 79E8 F275 C36A

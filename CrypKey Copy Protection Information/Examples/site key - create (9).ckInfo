@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=Create Site Key Example - 9
+
+Action=CreateSiteKey
+SiteCode=5051 53C4 2895 4762 91

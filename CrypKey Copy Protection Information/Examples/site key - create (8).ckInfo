@@ -1,0 +1,10 @@
+#Default Script (ckInfo)
+
+ScriptName=Create Site Key Example - 8
+
+Action=CreateSiteKey
+SiteCode=CABC 712E 4A54 040D 4B
+UserKey=C81A E76D 3742 F5EC E862 D2
+EasyLicence=yes
+KeyLevel=7812
+KeyOptions=4,5,6

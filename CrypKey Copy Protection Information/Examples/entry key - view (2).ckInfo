@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View Entry Key Example - 2
+
+Action=ViewEntryKey
+EntryKey=D61F 9394 BFB8 05

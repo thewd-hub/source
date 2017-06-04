@@ -1,0 +1,11 @@
+#Default Script (ckInfo)
+
+ScriptName=Create Site Key Example - 6
+
+Action=CreateSiteKey
+SiteCode=D3D1 9008 2C97 5C1D 7C
+Password=GNWNN77777
+AddToExistingLicence=yes
+EasyLicence=yes
+KeyLevel=43
+KeyOptions=3-9,13-15

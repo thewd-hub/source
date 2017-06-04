@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View Entry Key Example - 3
+
+Action=ViewEntryKey
+EntryKey=D644 D471 85C4 DA

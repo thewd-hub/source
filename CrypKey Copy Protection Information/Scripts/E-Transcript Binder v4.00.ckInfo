@@ -1,0 +1,13 @@
+#Default Script (ckInfo)
+
+ScriptName=E-Transcript Binder v4.00
+
+Action=CreateSiteKey
+UserKey=D51C B4CC F773 5B79 574C D6
+NumberOfLicences=1
+NetworkLicence=no
+AddToExistingLicence=no
+EasyLicence=no
+LicenceDuration=unlimited
+KeyOptions=0
+KeyLevel=3

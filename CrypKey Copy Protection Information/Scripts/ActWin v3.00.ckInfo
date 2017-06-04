@@ -1,0 +1,13 @@
+#Default Script (ckInfo)
+
+ScriptName=ActWin v3.00
+
+Action=CreateSiteKey
+UserKey=CC4C 815C D1F2 74B9 2FFB B6
+NumberOfLicences=10
+NetworkLicence=yes
+AddToExistingLicence=no
+EasyLicence=no
+LicenceDuration=unlimited
+KeyOptions=0
+KeyLevel=0

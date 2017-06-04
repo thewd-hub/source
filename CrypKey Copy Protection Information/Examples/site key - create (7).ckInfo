@@ -1,0 +1,15 @@
+#Default Script (ckInfo)
+
+ScriptName=Create Site Key Example - 7
+
+Action=CreateSiteKey
+SiteCode=1F1E 76EE F48B D47B A0
+UserKeyHash=0x423F
+AddToExistingLicence=yes
+EasyLicence=no
+NumberOfLicences=34
+NetworkLicence=yes
+LicenceDuration=runs
+NumberOfRuns=2
+KeyLevel=0
+KeyOptions=4-7,13,15,16

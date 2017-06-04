@@ -1,0 +1,14 @@
+#Default Script (ckInfo)
+
+ScriptName=Create Site Key Example - 2
+
+Action=CreateSiteKey
+SiteCode=DEFA AAFD F54B 0DA3 B9
+UserKey=C81A E76D 3742 F5EC E862 D2
+AddToExistingLicence=no
+NumberOfLicences=83
+NetworkLicence=no
+LicenceDuration=runs
+NumberOfRuns=934
+KeyLevel=346
+KeyOptions=4,8,12

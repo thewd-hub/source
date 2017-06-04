@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=Create User Key Example - 3
+
+Action=CreateUserKey
+Password=KENONIC

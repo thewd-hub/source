@@ -1,0 +1,31 @@
+#Default Script (ckInfo)
+
+ScriptName=CrypKey Site Key Generator
+
+Action=CreateSiteKey
+UserKey=DAA7 6B07 0237 5AF5 24
+NumberOfLicences=10
+NetworkLicence=yes
+AddToExistingLicence=no
+EasyLicence=no
+LicenceDuration=unlimited
+KeyOptions=1,3,14
+KeyLevel=0
+
+/*
+ KeyLevel | Company Licenced
+--------------------------------------
+   0        CrypKey Canada
+   156      EIS
+   230      Akton
+   450      Lightspeed Systems
+   584      Blackland Research Center
+   759      i-CD Publishing
+   777      SFWX
+   779      DJJ Holdings
+   815      Stelar International
+   818      Editor Software
+   846      Genio USA
+   922      RealLegal
+   984      Interactive Design Systems
+*/

@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View User Key Example - 1
+
+Action=ViewUserKey
+UserKey=D454 815C D117 9EDB 51DC 7C

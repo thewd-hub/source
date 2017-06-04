@@ -1,0 +1,263 @@
+CrypKey Copy Protection Information
+------------------------------------------------------------------------------
+
+Document Changes
+==============================================================================
+
+v1.03 (21 July 2004)
+- changed encryption key identifiers
+  renamed: EncryptionId1 to EncryptionKeyId1 (original depreciated)
+           EncryptionId2 to EncryptionKeyId2 (original depreciated)
+
+v1.02 (03 January 2003)
+- support for viewing codes & keys (see Action parameter)
+  added  : ConfirmationCode
+           EntryKey
+           MasterKey
+           RestrictionKey
+           SiteKey
+
+v1.01 (01 December 2002)
+- support for v6.00+ site codes & site keys
+  removed: IsPhysicalDrive (no longer supported in final version)
+  renamed: SiteCodeCheckByte to SiteCodeId (original depreciated)
+           UseDriveSerial to AllowEasyLicence (original depreciated)
+           UserKeyValue to UserKeyHash (original depreciated)
+           UserKeyValueSeed to UserKeyHashSeed (original depreciated)
+  added  : AllowAddToExistingLicence
+           AllowEasyLicence
+           EasyLicence
+           EncryptionId1
+           EncryptionId2
+
+v1.00 (19 October 2002)
+- first release
+
+
+Supported Parameters
+==============================================================================
+
+Script Header      - #Default Script (ckInfo)
+Parameter Format   - <Parameter Name>=<Parameter Value>
+Supported Comments - ;...
+                     //...
+                     /*...*/
+
+------------------------------------------------------------------------------
+
+AccountNumber
+
+   company account number
+   Values  : <integer> (0 <= x <= 1023)
+   Example : AccountNumber=402
+   Action  : CreateMasterKey, CreateSiteCode, CreateSiteCode6
+
+Action [REQUIRED]
+
+   specifies the script action, i.e. which key/code to create/view
+   Values  : CreateMasterKey | CreateUserKey | CreateSiteCode | CreateSiteCode6 | CreateSiteKey
+             ViewMasterKey | ViewUserKey | ViewSiteCode | ViewSiteKey | ViewRestrictionKey
+             ViewEntryKey | ViewConfirmationCode | ViewDiskInformation
+   Example : Action=CreateMasterKey
+   Action  : ALL
+
+AddToExistingLicence
+
+   whether to add this new licence to an existing licence (v3.40+)
+   Values  : yes | no
+   Example : AddToExistingLicence=no
+   Action  : CreateSiteKey
+
+AllowAddToExistingLicence
+
+   whether to allow the add to existing licence option (v3.40+)
+   Values  : yes | no
+   Example : AllowAddToExistingLicence=no
+   Action  : CreateSiteCode, CreateSiteCode6
+
+AllowEasyLicence
+
+   whether to allow easy licences (v6.00+)
+   Values  : yes | no
+   Example : AllowEasyLicence=no
+   Action  : CreateSiteCode6
+
+ApplicationId
+
+   id assigned to the application
+   Values  : <integer> (0 <= x <= 63)
+   Example : ApplicationId=1
+   Action  : CreateSiteCode, CreateSiteCode6
+
+ConfirmationCode
+
+   the confirmation code
+   Values  : <string>
+   Example : ConfirmationCode=DC81 6687 FA10 9C69 9285 E10D 2B
+   Action  : ViewConfirmationCode
+
+CrypKeyLibraries
+
+   version of the crypkey libraries used (>=6.0 if using CreateSiteCode6)
+   Values  : <float> (1.0 <= x <= 9.9)
+   Example : CrypKeyLibraries=4.4
+   Action  : CreateSiteCode, CreateSiteCode6
+
+DriveSerialNumber
+
+   the drive serial number to use for easy licences (v6.00+)
+   Values  : <integer> (0 <= x <= 32767)
+   Example : DriveSerialNumber=18405
+   Action  : CreateSiteCode6
+
+EasyLicence
+
+   whether to use the easy licence facility (v6.00+)
+   Values  : yes | no
+   Example : EasyLicence=yes
+   Action  : CreateSiteKey
+
+EncryptionKeyId1
+   the id used to identify the first set of encryption keys used (v6.00+)
+   Values  : <integer> (0x00 <= x <= 0x1F)
+   Example : EncryptionKeyId1=0x0A
+   Action  : CreateSiteCode6
+
+EncryptionKeyId2
+   the id used to identify the second set of encryption keys used (v6.00+)
+   Values  : <integer> (0x00 <= x <= 0x1F)
+   Example : EncryptionKeyId2=0x0A
+   Action  : CreateSiteCode6
+
+EntryKey
+
+   the entry key
+   Values  : <string>
+   Example : EntryKey=D0B1 7362 EA4D 12
+   Action  : ViewEntryKey
+
+Filename
+
+   filename of the protected application
+   Values  : <string>
+   Example : Filename=example.exe
+   Action  : CreateMasterKey
+
+KeyLevel
+
+   the authorised level assigned to the licence
+   Values  : <integer> (0 <= x <= 65535)
+   Example : KeyLevel=543
+   Action  : CreateSiteKey
+
+KeyOptions
+
+   the key options to enable (turn on)
+   Values  : <string> (0 <= x <= 16)
+   Example : KeyOptions=2-5,7,9-11,13,15
+   Action  : CreateSiteKey
+
+LicenceDuration
+
+   the duration of the created licence
+   Values  : unlimited | days | runs
+   Example : LicenceDuration=runs
+   Action  : CreateSiteKey
+
+MasterKey
+
+   the company master key
+   Values  : <string>
+   Example : MasterKey=2A5D 57C4 1B4C 135B F09E 17F7 600B 2D70 79E8 F275 C36A
+   Action  : ViewMasterKey
+
+NumberOfLicences
+
+   the number of licences to authorise
+   Values  : <integer> (0 <= x <= 127)
+   Example : NumberOfLicences=83
+   Action  : CreateSiteKey
+
+NetworkLicence
+
+   whether to create a network licence
+   Values  : yes | no
+   Example : NetworkLicence=yes
+   Action  : CreateSiteKey
+
+NumberOfDays
+
+   the number of days to authorise
+   Values  : <integer> (0 <= x <= 32767)
+   Example : NumberOfDays=9991
+   Action  : CreateSiteKey
+
+NumberOfRuns
+
+   the number of runs to authorise
+   Values  : <integer> (0 <= x <= 32767)
+   Example : NumberOfRuns=543
+   Action  : CreateSiteKey
+
+Password
+
+   the password used to authorise the licence
+   Values  : <string>
+   Example : Password=GOWOO77777
+   Action  : CreateUserKey, CreateSiteKey
+
+RestrictionKey
+
+   the restriction key
+   Values  : <string>
+   Example : RestrictionKey=F319 8987 D64A B9AC 6F6E 6E49 59A4 43
+   Action  : ViewRestrictionKey
+
+ScriptName
+
+   the displayed name which describes the executing script
+   Values  : <string>
+   Example : ScriptName=Example Script
+   Action  : ALL
+
+SiteCode
+
+   the site code given by the application (used to generate the site key)
+   Values  : <string>
+   Example : SiteCode=DF2D BC5C A786 A806 0C
+   Action  : CreateSiteKey, ViewSiteCode
+
+SiteCodeId
+
+   id used to see whether the site code and site key matches
+   Values  : <integer> (0x00 <= x <= 0x7F)
+   Example : SiteCodeId=0x2B
+   Action  : CreateSiteCode
+
+SiteKey
+
+   the site key
+   Values  : <string>
+   Example : SiteKey=F120 D0A8 C5D3 DBC3 B2F6 F856 2F
+   Action  : ViewSiteKey
+
+UserKey
+
+   the company user key (used to extract the password)
+   Values  : <string>
+   Example : UserKey=C81A E76D 3742 F5EC E862 D2
+   Action  : CreateSiteKey, ViewUserKey
+
+UserKeyHash
+
+   the hash value given by the /userKey <user key> option (instead of using a password)
+   Values  : <integer> (0x0000 <= x <= 0xFFFF)
+   Example : UserKeyHash=0x8CF5
+   Action  : CreateSiteKey
+
+UserKeyHashSeed
+
+   the seed value which is applied to the user key hash (checks password is correct)
+   Values  : <integer> (0x0000 <= x <= 0xFFFF)
+   Example : UserKeyHashSeed=0x47E5
+   Action  : CreateSiteCode

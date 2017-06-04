@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View Site Key Example - 3
+
+Action=ViewSiteKey
+SiteKey=FA3F A3F5 6CCC 4BA7 8784 3477 DE

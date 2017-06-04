@@ -1,0 +1,10 @@
+#Default Script (ckInfo)
+
+ScriptName=Create Site Code Example - 2
+
+Action=CreateSiteCode
+AccountNumber=0
+ApplicationId=1
+CrypKeyLibraries=3.0
+SiteCodeId=0x1D
+UserKeyHashSeed=0xD798

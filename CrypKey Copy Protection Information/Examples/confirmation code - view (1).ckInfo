@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View Confirmation Code Example - 1
+
+Action=ViewConfirmationCode
+ConfirmationCode=DC81 6687 FA10 9C69 9285 E10D 2B

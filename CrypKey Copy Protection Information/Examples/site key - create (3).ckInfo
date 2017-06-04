@@ -1,0 +1,12 @@
+#Default Script (ckInfo)
+
+ScriptName=Create Site Key Example - 3
+
+Action=CreateSiteKey
+SiteCode=DF2D BC5C A786 A806 0C
+Password=GNWNN77777
+NumberOfLicences=64
+NetworkLicence=yes
+LicenceDuration=unlimited
+KeyLevel=543
+KeyOptions=14-15

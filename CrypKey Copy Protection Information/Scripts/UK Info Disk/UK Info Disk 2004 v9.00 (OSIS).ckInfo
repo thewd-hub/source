@@ -1,0 +1,14 @@
+#Default Script (ckInfo)
+
+ScriptName=UK Info Disk 2004 v9.00 - OSIS
+
+Action=CreateSiteKey
+UserKey=C81A E76D 3742 F5EC E862 D2
+NumberOfLicences=10
+NetworkLicence=yes
+AddToExistingLicence=no
+EasyLicence=no
+LicenceDuration=runs
+NumberOfRuns=10000
+KeyOptions=9
+KeyLevel=192

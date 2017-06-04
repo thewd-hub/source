@@ -1,0 +1,1 @@
+void showConfirmationCodeInformation(char* confirmationCodeString);

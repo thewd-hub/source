@@ -1,0 +1,5 @@
+#Default Script (ckInfo)
+
+ScriptName=View Disk Information
+
+Action=ViewDiskInformation

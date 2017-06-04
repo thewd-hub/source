@@ -1,0 +1,14 @@
+#Default Script (ckInfo)
+
+ScriptName=CrypKey Examples
+
+Action=CreateSiteKey
+UserKey=D050 815C D1A2 A79D B1
+NumberOfLicences=24
+NetworkLicence=yes
+AddToExistingLicence=no
+EasyLicence=no
+LicenceDuration=days
+NumberOfDays=4
+KeyOptions=2-4,6,7
+KeyLevel=3

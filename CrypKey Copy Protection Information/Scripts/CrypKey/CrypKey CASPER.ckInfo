@@ -1,0 +1,13 @@
+#Default Script (ckInfo)
+
+ScriptName=CrypKey CASPER
+
+Action=CreateSiteKey
+UserKey=C614 E768 4E67 2605 BB3E 3E
+NumberOfLicences=1
+NetworkLicence=no
+AddToExistingLicence=no
+EasyLicence=no
+LicenceDuration=unlimited
+KeyOptions=0
+KeyLevel=0

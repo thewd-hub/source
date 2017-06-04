@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View Restriction Key Example - 2
+
+Action=ViewRestrictionKey
+RestrictionKey=9248 506E D62B 8990 1B93 3FED CB37 BE

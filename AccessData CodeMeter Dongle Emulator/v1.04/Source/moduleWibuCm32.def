@@ -1,0 +1,25 @@
+LIBRARY	WibuCm32
+EXPORTS
+	CmAccess=_CmAccess @1
+	CmAccess2=_CmAccess2 @100
+	CmRelease=_CmRelease @76
+	CmGetVersion=_CmGetVersion @70
+	CmCheckEvents=_CmCheckEvents @15
+
+	CmGetBoxes=_CmGetBoxes @48
+	CmGetInfo=_CmGetInfo @50
+
+	CmGetLastErrorCode=_CmGetLastErrorCode @52
+	CmGetLastErrorText=_CmGetLastErrorText @54
+	CmSetLastErrorCode=_CmSetLastErrorCode @82
+
+	CmGetRemoteContext=_CmGetRemoteContext @62
+	CmSetRemoteUpdate=_CmSetRemoteUpdate @84
+
+	CmSetCertifiedTimeUpdate=_CmSetCertifiedTimeUpdate @80
+
+	CmCrypt=_CmCrypt @28
+
+	CmActLicenseControl=_CmActLicenseControl @ 140
+
+	_RSA_public_decrypt @1001

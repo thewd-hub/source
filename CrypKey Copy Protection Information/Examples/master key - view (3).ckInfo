@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View Master Key Example - 3
+
+Action=ViewMasterKey
+MasterKey=E097 57C4 4728 4770 56AE 4367 ECFE 9C62 5BBB 9C62 9276

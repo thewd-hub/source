@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View Confirmation Code Example - 2
+
+Action=ViewConfirmationCode
+ConfirmationCode=D433 D480 5806 3DE0 3BAF E872 5D

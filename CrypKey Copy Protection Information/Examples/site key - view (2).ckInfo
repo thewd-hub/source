@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View Site Key Example - 2
+
+Action=ViewSiteKey
+SiteKey=C139 C392 C58E 3928 1865 B112 43

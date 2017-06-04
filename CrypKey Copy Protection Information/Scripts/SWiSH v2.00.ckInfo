@@ -1,0 +1,13 @@
+#Default Script (ckInfo)
+
+ScriptName=SWiSH v2.00
+
+Action=CreateSiteKey
+UserKey=D2F9 1EDA 11AA E8
+NumberOfLicences=1
+NetworkLicence=no
+AddToExistingLicence=no
+EasyLicence=no
+LicenceDuration=unlimited
+KeyOptions=0
+KeyLevel=0

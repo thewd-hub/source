@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View Entry Key Example - 4
+
+Action=ViewEntryKey
+EntryKey=entrykey4.ent

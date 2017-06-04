@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View Entry Key Example - 1
+
+Action=ViewEntryKey
+EntryKey=D0B1 7362 EA4D 12

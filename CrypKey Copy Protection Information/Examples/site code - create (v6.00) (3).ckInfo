@@ -1,0 +1,13 @@
+#Default Script (ckInfo)
+
+ScriptName=Create Site Code Example - 3
+
+Action=CreateSiteCode6
+AccountNumber=0
+ApplicationId=1
+CrypKeyLibraries=6.0
+AllowAddToExistingLicence=no
+AllowEasyLicence=yes
+DriveSerialNumber=32142
+EncryptionId1=0x11
+EncryptionId2=0x12

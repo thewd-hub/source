@@ -1,0 +1,6 @@
+#Default Script (ckInfo)
+
+ScriptName=View Master Key Example - 7
+
+Action=ViewMasterKey
+MasterKey=3cfb2d5d61c3216c2b5da7d7f7e3cfab32f4445be9adc00e58d968877c746c20c096c5fcfd0faca080921920c6e1b5f74efda4d288b3a7e760380ce264340c5a50e5762f07cf809ec60c264dd8a8be76e68ffb2d0205ab64f6b5a4b00f080c253cafd92276985535a5d55c8805e5c44b4c5ec143d3929853e047148845d759b

@@ -1,0 +1,14 @@
+#Default Script (ckInfo)
+
+ScriptName=Create Site Key Example - 4
+
+Action=CreateSiteKey
+SiteCode=D7EB FCB3 F542 1562 75
+UserKeyHash=0x8CF5
+AddToExistingLicence=no
+NumberOfLicences=98
+NetworkLicence=yes
+LicenceDuration=days
+NumberOfDays=9991
+KeyLevel=3
+KeyOptions=2,3,6
