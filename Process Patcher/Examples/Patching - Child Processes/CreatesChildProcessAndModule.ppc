@@ -1,0 +1,20 @@
+#Process Patcher Configuration File
+Version=4.00
+
+PatchInformation=Example of patching a child process and module
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Child Process & Module Example
+Filename=CreatesChildProcessAndModule.exe
+
+[Child Process]
+Filename=regi*ter.e?e
+
+[Module]
+Filename=regi*1.*
+Address=0x1031:0x1B:0x33
+
+[Module]
+Filename=regist??2.d?l
+Address=0x1031:0x1B:0x33

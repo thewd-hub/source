@@ -1,0 +1,10 @@
+#Process Patcher Configuration File
+Version=4.00
+
+PatchInformation=Example of process patching with an invalid memory address
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Process Patching Example
+Filename=register.exe
+Address=0x401014:0x1C:0x00

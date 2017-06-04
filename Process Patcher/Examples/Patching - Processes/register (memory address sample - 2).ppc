@@ -1,0 +1,10 @@
+#Process Patcher Configuration File
+Version=4.15
+
+PatchInformation=Example of process patching
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Process Patching Example
+Filename=register.exe
+Address=0x401015:=0xD8,0x1B,>=0xC0,><0x80-0x84:.,0x33,.,.:10

@@ -1,0 +1,14 @@
+#Process Patcher Configuration File
+Version=4.15
+
+PatchInformation=Example of patching a process module
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Module Patching Example
+Filename=register.exe
+
+[Module]
+Filename=register1.dll
+Filesize=40000-42000
+Address=0x1031:0x1B:0x33

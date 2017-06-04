@@ -1,0 +1,22 @@
+#Process Patcher Configuration File
+Version=4.10
+
+PatchInformation=Example of using the process patcher plugin api
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Plugin API Example
+Filename=RegistryKey.exe
+
+[Registry]
+Action=CreateKey, HKEY_CURRENT_USER\PROCESSPATCHERTEST\KEY1
+
+[Registry]
+Action=DeleteKey, HKEY_CURRENT_USER\PROCESSPATCHERTEST\KEY1
+
+[Registry]
+Action=CreateKey, HKEY_CURRENT_USER\PROCESSPATCHERTEST\KEY1
+
+[Plugin]
+PluginVersion=1.01
+Filename=ResumeRegistryPatching.dll

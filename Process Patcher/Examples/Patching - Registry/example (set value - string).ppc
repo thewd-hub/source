@@ -1,0 +1,16 @@
+#Process Patcher Configuration File
+Version=4.00
+
+PatchInformation=Example of using the Registry Patching engine
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Registry Patching Example
+IgnoreParsingErrors=true
+
+[Registry]
+Action=SetValue, HKEY_CURRENT_USER\PROCESSPATCHERTEST\TESTVALUE, "Test Value", REG_SZ
+Action=SetValue, HKEY_CURRENT_USER\PROCESSPATCHERTEST\STRING, "Test String", REG_SZ
+Action=SetValue, HKEY_CURRENT_USER\PROCESSPATCHERTEST\STRING_EXPAND, %WINDIR%, REG_EXPAND_SZ
+Action=SetValue, HKEY_CURRENT_USER\PROCESSPATCHERTEST\STRING_MULTI, "Test String", REG_MULTI_SZ
+Action=SetValue, HKEY_CURRENT_USER\PROCESSPATCHERTEST\STRING_BLANK, "", REG_SZ

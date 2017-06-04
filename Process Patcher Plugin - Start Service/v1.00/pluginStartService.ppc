@@ -1,0 +1,15 @@
+#Process Patcher Configuration File
+Version=4.10
+
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Start Service v1.00
+Filename=<request>
+
+[Plugin]
+PluginVersion=1.00
+Filename=pluginStartService.dll
+Arguments="Crypkey License"
+
+#End of Configuration File

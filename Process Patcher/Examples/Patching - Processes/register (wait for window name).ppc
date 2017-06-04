@@ -1,0 +1,11 @@
+#Process Patcher Configuration File
+Version=4.00
+
+PatchInformation=Example of process patching after waiting for the specified window name
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Process Patching Example
+Filename=register.exe
+WaitForWindowName=P??cess*Exam??e
+Address=0x401016:0x1B:0x33

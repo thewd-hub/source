@@ -1,0 +1,12 @@
+#Process Patcher Configuration File
+Version=4.00
+
+PatchInformation=Example of using the Registry Patching engine
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Registry Patching Example
+Filename=RegistryValue.exe
+
+[Registry]
+Action=SetValue, HKEY_CURRENT_USER\PROCESSPATCHERTEST\KEY1\VALUE1, "NOT REGISTERED", REG_SZ

@@ -1,0 +1,11 @@
+#Process Patcher Configuration File
+Version=4.13
+
+PatchInformation=Example of process patching after waiting for 5 seconds
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Process Patching Example
+Filename=register.exe
+Address=0x401016:0x1B:0x33
+WaitForTimeDelay=3

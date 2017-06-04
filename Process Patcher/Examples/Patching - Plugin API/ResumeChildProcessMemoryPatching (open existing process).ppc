@@ -1,0 +1,18 @@
+#Process Patcher Configuration File
+Version=4.12
+
+PatchInformation=Example of using the process patcher plugin api
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Plugin API Example
+Filename=registerChildProcess.exe
+Address=0x401016:0x1B:0x33
+OpenExistingProcess=true
+
+[Child Process]
+Filename=regist??.ex?
+
+[Plugin]
+PluginVersion=1.03
+Filename=ResumeChildProcessMemoryPatching.dll

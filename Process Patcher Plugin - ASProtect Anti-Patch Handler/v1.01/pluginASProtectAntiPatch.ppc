@@ -1,0 +1,14 @@
+#Process Patcher Configuration File
+Version=4.10
+
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=ASProtect Anti-Patch Handler v1.01
+Filename=<request>
+
+[Plugin]
+PluginVersion=1.01
+Filename=pluginASProtectAntiPatch.dll
+
+#End of Configuration File

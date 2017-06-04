@@ -1,0 +1,25 @@
+#Process Patcher Configuration File
+Version=4.00
+
+PatchInformation=Example Script
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Test Program
+Filename=test.exe
+Filesize=363818
+Arguments=/quiet
+WaitForWindowName=Test*
+
+Address=0x402368:0x55:0xB0
+Address=0x402369:0x8B:0x01
+Address=0x40236A:0xEC:0xC3
+
+[Module]
+Filename=testModule.dll
+Address=0x004322:0x12:0x00
+
+[Plugin]
+Filename=testPlugin.dll
+PluginVersion=1.05
+Arguments=VERBOSE

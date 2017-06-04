@@ -1,0 +1,220 @@
+Process Patcher
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+(see plugin api examples for the api header file and sample sources)
+
+API Versions
+==============================================================================
+
+ version | definition              | value  | process patcher version
+--------------------------------------------------------------------------
+  v1.03  | API_PLUGIN_VERSION_0103 | 0x0103 | v4.13+
+  v1.02  | API_PLUGIN_VERSION_0102 | 0x0102 | v4.11+
+  v1.01  | API_PLUGIN_VERSION_0101 | 0x0101 | v4.10+
+  v1.00  | API_PLUGIN_VERSION_0100 | 0x0100 | v4.00 - v4.04 (unsupported)
+
+
+API Changes
+==============================================================================
+
+v1.03 (01 April 2003)
+- the pluginVersion property within PLUGIN_VERSION_INFORMATION structure
+  has changed from a LPSTR to a DWORD (i.e. v1.01 == 0x0101)
+
+v1.02 (02 September 2002)
+- added GetThreadId & GetThreadHandle to Child Process support functions
+- GetProcessFilename (Target Process support function) now returns the full
+  path and file name, when under API v1.01 it only returned the file name
+
+v1.01 (21 June 2002)
+- redefined the whole api functions and structures to be more robust
+  (added support functions, more waiting events & child process information)
+
+v1.00 (21 May 2001)
+- first release of the plugin api (no longer supported under v4.10+)
+
+
+API Export Functions
+==============================================================================
+
+GetLastPluginError (v1.01+)
+
+   returns a message corresponding to the last error that occurred
+   i.e. LPSTR GetLastPluginError(VOID)
+
+GetPluginVersionInformation (v1.01+)
+
+   passes the PLUGIN_VERSION_INFORMATION structure which the plugin completes
+   i.e. BOOL GetPluginVersionInformation(PLUGIN_VERSION_INFORMATION* pluginVersionInformation)
+
+ExecutePlugin (v1.01+)
+
+   called by the patching engine to begin the plugin execution
+   i.e. BOOL ExecutePlugin(PLUGIN_EXECUTION_INFORMATION* pluginExecutionInformation)
+
+
+API Structures
+==============================================================================
+
+PLUGIN_VERSION_INFORMATION (v1.01+)
+
+   structure passed to the GetPluginVersionInformation export function that
+   is used by the plugin to return its version and support information
+
+   WORD apiPluginVersion	// must be set to the required API_PLUGIN_VERSION
+   LPSTR pluginDescription	// plugin description
+   union
+   {
+      // v1.03+
+      DWORD pluginVersion	// plugin version - v1.01, i.e. 0x0101
+      // v1.01/v1.02
+      LPSTR pluginVersion	// plugin version - v1.01, i.e. "1.01"
+   }
+
+PLUGIN_EXECUTION_INFORMATION (v1.01+)
+
+   structure passed to the ExecutePlugin export function that contains the
+   base support functions, and include pointers to other support functions
+
+
+API Functions - Base
+==============================================================================
+
+PluginHasInitialised (v1.01+)
+
+   executed by the plugin after it has initialised and returns control once
+   the EVENT_PATCHINGENGINE_INITIALISED waiting event has been set
+   i.e. VOID PluginHasInitialised(VOID)
+
+GetPluginSettings (v1.01+)
+
+   returns a DWORD representing the current settings. Only currently supports
+   the debug flag (set if the process patcher engine is executing in debug mode)
+   i.e. DWORD GetPluginSettings(VOID)
+
+GetPluginArgumentCount (v1.01+)
+
+   returns the number of arguments that were passed to the plugin
+   i.e. DWORD GetPluginArgumentCount(VOID)
+
+GetPluginArgument (v1.01+)
+
+   returns the argument passed based on the index. returns NULL if not found
+   [0 <= dwArgumentIndex < GetPluginArgumentCount()]
+   i.e. LPSTR GetPluginArgument(DWORD dwArgumentIndex)
+
+
+API Functions - Target Process
+==============================================================================
+
+GetProcessFilename (v1.01+)
+
+   returns the filename of the target process
+   i.e. LPSTR GetProcessFilename(VOID)
+
+GetProcessId (v1.01+)
+
+   returns the process id of the target process
+   i.e. DWORD GetProcessId(VOID)
+
+GetProcessHandle (v1.01+)
+
+   returns a handle to the target process
+   i.e. HANDLE GetProcessHandle(VOID)
+
+GetThreadId (v1.01+)
+
+   returns the primary thread id of the target process
+   i.e. DWORD GetThreadId(VOID)
+
+GetThreadHandle (v1.01+)
+
+   returns a handle to the primary thread of the target process
+   i.e. HANDLE GetThreadHandle(VOID)
+
+GetProcessSessionId (v1.03+)
+
+   returns the process session id of the target process
+   i.e. DWORD GetProcessSessionId(VOID)
+
+
+API Functions - Child Process
+==============================================================================
+
+GetProcessFilename (v1.01+)
+
+   returns the filename of the child process
+   i.e. LPSTR GetProcessFilename(VOID)
+
+GetProcessId (v1.01+)
+
+   returns the process id of the child process
+   i.e. DWORD GetProcessId(VOID)
+
+GetProcessHandle (v1.01+)
+
+   returns a handle to the child process
+   i.e. HANDLE GetProcessHandle(VOID)
+
+GetThreadId (v1.02+)
+
+   returns the primary thread id of the child process
+   i.e. DWORD GetThreadId(VOID)
+
+GetThreadHandle (v1.02+)
+
+   returns a handle to the primary thread of the child process
+   i.e. HANDLE GetThreadHandle(VOID)
+
+GetProcessSessionId (v1.03+)
+
+   returns the process session id of the child process
+   i.e. DWORD GetProcessSessionId(VOID)
+
+
+API Functions - Waiting Events
+==============================================================================
+
+GetEventName (v1.01+)
+
+   returns the event name from the supplied event id
+   i.e. LPSTR GetEventName(DWORD dwEventId)
+
+WaitForEvent (v1.01+)
+
+   waits for the specified plugin event to be set
+   i.e. BOOL WaitForEvent(DWORD dwEventId)
+
+SetEvent (v1.01+)
+
+   sets the specified plugin event
+   i.e. BOOL SetEvent(DWORD dwEventId)
+
+ResetEvent (v1.01+)
+
+   resets the specified plugin event
+   i.e. BOOL ResetEvent(DWORD dwEventId)
+
+
+API Functions - Other
+==============================================================================
+
+DisplayConsoleMessage (v1.01+)
+
+   displays a message within the console window of the process patcher
+   i.e. VOID DisplayConsoleMessage(LPSTR lpMessage)
+
+ReadMemoryAddress (v1.01+)
+
+   reads from the memory address of the specified process
+   i.e. BOOL ReadMemoryAddress(HANDLE hProcess, DWORD dwMemoryAddress,
+                               DWORD dwNumberOfBytes, UCHAR* pMemoryBuffer,
+                               BOOL bAlterMemoryProtection)
+
+WriteMemoryAddress (v1.01+)
+
+   writes to the memory address of the specified process
+   i.e. BOOL WriteMemoryAddress(HANDLE hProcess, DWORD dwMemoryAddress,
+                                DWORD dwNumberOfBytes, UCHAR* pMemoryBuffer,
+                                BOOL bAlterMemoryProtection)

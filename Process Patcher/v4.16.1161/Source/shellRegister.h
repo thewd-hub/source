@@ -1,0 +1,6 @@
+//////////////////////////////////////////////////////////////
+// Registers/Unregisters the process patcher file extension //
+//////////////////////////////////////////////////////////////
+
+void registerFileExtension(bool ignoreConsoleDisplay = false);
+void unregisterFileExtension(bool ignoreConsoleDisplay = false);

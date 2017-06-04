@@ -1,0 +1,14 @@
+#Process Patcher Configuration File
+Version=4.15
+
+PatchInformation=Example of patching a child process (correct filesize)
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Child Process Example
+Filename=CreatesChildProcess.exe
+Address=0x401016:0x1B:0x33
+
+[Child Process]
+Filename=register.exe
+Filesize=67000-68000

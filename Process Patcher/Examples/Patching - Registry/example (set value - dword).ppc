@@ -1,0 +1,15 @@
+#Process Patcher Configuration File
+Version=4.00
+
+PatchInformation=Example of using the Registry Patching engine
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Registry Patching Example
+IgnoreParsingErrors=true
+
+[Registry]
+Action=SetValue, HKEY_CURRENT_USER\PROCESSPATCHERTEST\DWORD, 12345678, REG_DWORD
+Action=SetValue, HKEY_CURRENT_USER\PROCESSPATCHERTEST\DWORD_HEX, 0x12345678, REG_DWORD
+Action=SetValue, HKEY_CURRENT_USER\PROCESSPATCHERTEST\DWORD_LITTLE_ENDIAN, 0x12345678, REG_DWORD_LITTLE_ENDIAN
+Action=SetValue, HKEY_CURRENT_USER\PROCESSPATCHERTEST\DWORD_BIG_ENDIAN, 0x12345678, REG_DWORD_BIG_ENDIAN

@@ -1,0 +1,17 @@
+#Process Patcher Configuration File
+Version=4.00
+
+PatchInformation=Example of patching modules using pattern-matching
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Module Patching Example
+Filename=register.exe
+
+[Module]
+Filename=regist??1.*
+Address=0x1031:0x1B:0x33
+
+[Module]
+Filename=regist??2.*
+Address=0x1031:0x1B:0x33

@@ -1,0 +1,19 @@
+#Process Patcher Configuration File
+Version=4.10
+
+PatchInformation=Demonstrates the parsing engine and the error handling used
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Parsing Engine Example
+Filename=..\register.exe
+
+/*Address=0x401014:0x1C:0x00
+Address=0x401014:0x1C:0x00
+Address=0x401014:0x1C:0x00*/
+
+;Address=0x401014:0x1B:0x33
+
+//Address=0x401014:0x1B:0x33
+
+Address=0x401016:0x1B:0x33

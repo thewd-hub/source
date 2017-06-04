@@ -1,0 +1,17 @@
+#Process Patcher Configuration File
+Version=4.16
+
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+BlockExecution=WOW64,64-Bit
+
+DisplayName=Inject Module v2.00
+OpenExistingProcess=true
+Filename=<request>
+
+[Plugin]
+PluginVersion=2.00
+Filename=pluginInjectModule.dll
+Arguments=<module filename>
+
+#End of Configuration File

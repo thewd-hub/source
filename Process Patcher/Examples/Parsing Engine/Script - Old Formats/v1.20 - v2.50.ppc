@@ -1,0 +1,9 @@
+#Process Patcher Configuration File v1.2
+// Friendly Name
+Parsing Engine Example
+// Program Filename
+..\register.exe
+// Number of Bytes to be patched
+1
+// Memory Addresses for patch (Decimal)
+4198422:27:51

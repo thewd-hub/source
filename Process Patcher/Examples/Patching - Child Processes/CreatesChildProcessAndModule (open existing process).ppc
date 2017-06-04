@@ -1,0 +1,22 @@
+#Process Patcher Configuration File
+Version=4.12
+
+PatchInformation=Example of patching a running child process and module
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Child Process & Module Example
+Filename=CreatesChildProcessAndModule.exe
+Filesize=217600
+OpenExistingProcess=true
+
+[Child Process]
+Filename=regi*ter.e?e
+
+[Module]
+Filename=regi*1.dll
+Address=0x1031:0x1B:0x33
+
+[Module]
+Filename=regi*2.dll
+Address=0x1031:0x1B:0x33

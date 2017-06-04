@@ -1,0 +1,12 @@
+#Process Patcher Configuration File
+Version=4.15
+
+PatchInformation=Example of process patching
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+IgnoreSessionId=true
+DisplayName=Process Patching Example
+OpenExistingProcess=true
+Filename=<request>
+Address=0x401016:0x1B:0x33

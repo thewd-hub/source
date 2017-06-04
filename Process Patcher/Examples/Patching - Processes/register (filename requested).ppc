@@ -1,0 +1,10 @@
+#Process Patcher Configuration File
+Version=4.10
+
+PatchInformation=Example of process patching
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Process Patching Example
+Filename=<request>
+Address=0x401016:0x1B:0x33

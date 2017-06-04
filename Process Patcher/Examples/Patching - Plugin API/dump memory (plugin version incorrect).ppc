@@ -1,0 +1,15 @@
+#Process Patcher Configuration File
+Version=4.10
+
+PatchInformation=Example of using the process patcher plugin api
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Plugin API Example
+Filename=registerProcess.exe
+
+[Plugin]
+PluginVersion=1.51
+Filename=dumpmemory.dll
+Arguments=register.dump 0x400000 0x5000
+// <output filename> <start address> <length>

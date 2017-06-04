@@ -1,0 +1,16 @@
+#Process Patcher Configuration File
+Version=4.10
+
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Inno Setup Password Cracker v2.00
+WaitForGlobalWindowName=Setup -*
+Filename=<request>
+CreatesChildProcess=true
+
+[Plugin]
+PluginVersion=2.00
+Filename=pluginInnoSetup.dll
+
+#End of Configuration File

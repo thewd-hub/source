@@ -1,0 +1,11 @@
+#Process Patcher Configuration File
+Version=4.00
+
+PatchInformation=Example of patching a child process (without filename)
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Child Process Example
+Filename=CreatesChildProcess.exe
+CreatesChildProcess=true
+Address=0x401016:0x1B:0x33

@@ -1,0 +1,13 @@
+#Process Patcher Configuration File
+[Version]
+2.6
+[Friendly Name]
+Parsing Engine Example
+[Program Filename]
+..\register.exe
+[Program Filesize]
+67072
+[Number of Bytes]
+1
+[Memory Addresses]
+0x401016:0x1B:0x33

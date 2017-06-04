@@ -1,0 +1,22 @@
+#Process Patcher Configuration File
+Version=4.10
+
+PatchInformation=Example of using the process patcher plugin api
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Plugin API Example
+Filename=registerModules.exe
+Arguments=PLUGINCONTROL
+
+[Module]
+Filename=register1.dll
+Address=0x1031:0x1B:0x33
+
+[Module]
+Filename=<request>
+Address=0x1031:0x1B:0x33
+
+[Plugin]
+PluginVersion=1.01
+Filename=ResumeModulePatching.dll

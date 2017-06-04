@@ -1,0 +1,13 @@
+#Process Patcher Configuration File
+Version=4.00
+
+PatchInformation=Example of using the Registry Patching engine
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Registry Patching Example
+Filename=RegistryKey.exe
+
+[Registry]
+IsDisabled=true
+Action=CreateKey, HKEY_CURRENT_USER\PROCESSPATCHERTEST\KEY1

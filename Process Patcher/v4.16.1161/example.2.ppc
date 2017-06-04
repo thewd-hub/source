@@ -1,0 +1,27 @@
+#Process Patcher Configuration File
+Version=4.16
+SupportedPlatforms=All
+
+PatchInformation=Example Script
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Test Program
+Filename=test.exe
+Filesize=363818
+WaitForTimeDelay=3
+
+Address=0x402367:0x30,0x55,0x8B,0xEC:.,0xB0,0x01,0xC3:0x1000
+
+[Module]
+Filename=testModule.dll
+Address=0x004322:0x12:0x00
+
+[Plugin]
+Filename=testPlugin.dll
+PluginVersion=1.05
+Arguments=VERBOSE
+
+[Registry]
+IsDisabled=true
+Action=SetValue, HKEY_CURRENT_USER\PROCESSPATCHERTEST\KEY1\VALUE1, REGISTERED, REG_SZ

@@ -1,0 +1,12 @@
+#Process Patcher Configuration File
+Version=4.00
+StealthMode=true
+SupportedPlatforms=Win9x
+
+PatchInformation=Example of process patching
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Process Patching Example
+Filename=DisplayParentProcess.exe
+WaitForWindowName=DisplayParentProcess

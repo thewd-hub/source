@@ -1,0 +1,11 @@
+#Process Patcher Configuration File
+Version=4.15
+
+PatchInformation=Example of process patching after checking the filesize
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Process Patching Example
+Filename=register.exe
+Filesize=65000-68000
+Address=0x401016:0x1B:0x33

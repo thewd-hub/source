@@ -1,0 +1,9 @@
+#Process Patcher Configuration File
+Version=4.00
+
+PatchInformation=Example of process patching (possible recursion)
+PatchAuthor=thewd
+PatchContactInformation=thewd@hotmail.com
+
+DisplayName=Process Patching Example
+Filename=ppatcher.exe
