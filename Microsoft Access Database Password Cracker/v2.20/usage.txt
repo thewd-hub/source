@@ -1,0 +1,13 @@
+Microsoft Access Database Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  acpw <access database>
+
+<access database>
+
+   the microsoft access database file (*.mdb)
+
+------------------------------------------------------------------------------
+
+Note: Supports Microsoft Access 95/97/2000/2002/2003

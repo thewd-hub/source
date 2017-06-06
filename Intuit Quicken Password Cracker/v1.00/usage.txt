@@ -1,0 +1,35 @@
+Intuit Quicken Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  qkCrk [-bruteforce <password crc> <start length> <end length>]
+              [-intelliforce <crc> <start length> <end length> <tolerance>]
+              [-dictionary <password crc> <dictionary filename>]
+
+-bruteforce <password crc> <start length> <end length>
+
+   start the bruteforce search for the password
+   <password crc> - password crc value
+   <start length> - start length
+   <end length> - end length
+   e.g. -bruteforce 0x32985 1 4
+
+-intelliforce <crc> <start length> <end length> <tolerance>
+
+   start the intelliforce search (based on character frequencies)
+   <crc> - password crc value
+   <start length> - start length
+   <end length> - end length
+   <tolerance> - level of tolerance for valid words (1 - 12)
+   e.g. -intelliforce 0xD5438 1 10 3
+
+-dictionary <password crc> <dictionary filename>
+
+   searches the specified dictionary for a match with the password crc value
+   <password crc> - password crc value
+   <dictionary filename> - filename of the dictionary wordlist
+   e.g. -dictionary 0x32985 allwords.txt
+
+------------------------------------------------------------------------------
+
+Note: Supports Intuit Quicken 2000 - 2003

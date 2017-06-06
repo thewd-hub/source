@@ -1,0 +1,15 @@
+InstallShield Windows Installer Launcher Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  ISWIlauncher <setup launcher>
+
+<setup launcher>
+
+   the launcher executable filename (*.exe)
+
+------------------------------------------------------------------------------
+
+Note: Supports InstallShield Express v4.00
+               InstallShield Professional v7.00
+               InstallShield Developer v8.00

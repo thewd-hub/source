@@ -1,0 +1,13 @@
+RTPatch Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  RTpatch <protected patch file>
+
+<protected patch file>
+
+   the password protected patch file (*.rtp)
+
+------------------------------------------------------------------------------
+
+Note: Supports RTPatch v3.00 - v7.00

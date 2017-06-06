@@ -1,0 +1,13 @@
+MYOB Accounting Projects Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  MYOBcrk <MYOB project file>
+
+<MYOB project file>
+
+   the myob project filename
+
+------------------------------------------------------------------------------
+
+Note: Supports MYOB Accounting Projects v8.00 - v13.00

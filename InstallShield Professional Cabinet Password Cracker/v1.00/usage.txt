@@ -1,0 +1,13 @@
+InstallShield Professional Cabinet Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  IScab <installshield cabinet header>
+
+<installshield cabinet header>
+
+   the installshield cabinet header file (usually data1.hdr)
+
+------------------------------------------------------------------------------
+
+Note: Supports InstallShield Professional Cabinets v5.50 - v17.00

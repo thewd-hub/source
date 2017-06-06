@@ -1,0 +1,13 @@
+Microsoft Visual SourceSafe Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  VSScrk <user management database>
+
+<user management database>
+
+   the sourcesafe user management database (um.dat)
+
+------------------------------------------------------------------------------
+
+Note: Supports Microsoft Visual SourceSafe v5.00 & v6.00

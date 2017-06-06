@@ -1,0 +1,13 @@
+InstallShield Self-Extracting Executable Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  ISexe <self-extracting filename>
+
+<self-extracting filename>
+
+   filename of the target installation
+
+------------------------------------------------------------------------------
+
+Note: Supports InstallShield EXE Builder & InstallShield Express v1.xx/v2.xx

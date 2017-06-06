@@ -1,0 +1,13 @@
+Peachtree Accounting Access Key Finder
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  PTreeCrk <peachtree security code>
+
+<peachtree security code>
+
+   the security code given by Peachtree
+   e.g. abc123
+
+Note: When asked for a User Id & Password to access the file,
+      enter... 'ADMINISTRATOR' & 'passwordcommerce'

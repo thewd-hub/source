@@ -1,0 +1,40 @@
+Microsoft Money Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  moneyCrk <microsoft money database>
+                 [-bruteforce <start length> <end length> <charset - A1!>]
+                 [-intelliforce <start length> <end length> <tolerance level>]
+                 [-dictionary <dictionary filename>]
+
+<microsoft money database>
+
+   the money database filename (*.mny)
+
+[Microsoft Money 2002+ only]
+
+-bruteforce <start length> <end length> <charset - A1!>
+
+   start the bruteforce search for the password
+   <start length> - start length
+   <end length> - end length
+   <charset> - A (uppercase), 1 (numbers), ! (special)
+   e.g. money.mny -bruteforce 1 4 A!
+
+-intelliforce <start length> <end length> <tolerance level>
+
+   start the intelliforce search (based on character frequencies)
+   <start length> - start length
+   <end length> - end length
+   <tolerance level> - level of tolerance for valid words (1 - 12)
+   e.g. money.mny -intelliforce 1 5 4
+
+-dictionary <dictionary filename>
+
+   searches the specified dictionary for a password match
+   <dictionary filename> - filename of the dictionary wordlist
+   e.g. money.mny -dictionary allwords.txt
+
+------------------------------------------------------------------------------
+
+Note: Supports Microsoft Money 2000-2005

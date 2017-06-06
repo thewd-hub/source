@@ -1,0 +1,15 @@
+Norton Ghost Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  GhostCrk <ghost image file>
+
+<ghost image file>
+
+   the norton ghost image filename (*.gho)
+
+------------------------------------------------------------------------------
+
+Note: Supports Norton Ghost v4.10a - v8.00
+      Norton Ghost v9.00+ uses Drive Image technology which was acquired from
+      PowerQuest (use PowerQuest Drive Image Password Cracker to find password)

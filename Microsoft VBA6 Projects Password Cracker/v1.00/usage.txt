@@ -1,0 +1,9 @@
+Microsoft VBA6 Projects Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  vba6crk <vba6 project document>
+
+<vba6 project document>
+
+   the microsoft office document that contains the vba6 project

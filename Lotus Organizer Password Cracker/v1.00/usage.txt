@@ -1,0 +1,13 @@
+Lotus Organizer Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  OrgCrk <lotus organizer file>
+
+<lotus organizer file>
+
+   the organizer project filename (*.orX)
+
+------------------------------------------------------------------------------
+
+Note: Supports Lotus Organizer v2.00 - v6.00

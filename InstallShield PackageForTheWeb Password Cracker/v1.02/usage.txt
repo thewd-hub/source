@@ -1,0 +1,55 @@
+InstallShield PackageForTheWeb Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  ISpftw <pftw executable> [/longPassword] [/ignoreLength] [/dumpHeaders]
+
+<pftw executable>
+
+   target installation that has been distributed using PackageForTheWeb
+
+[/longPassword] (PFTW v2.03+)
+
+   used to attempt recovery of long passwords (28-54 characters)
+   (requires a certain knowledge about the files contained within the cabinet)
+   e.g. cabinet contains test.txt, test1.txt, test2.txt and test3.txt files
+        a) Number Of Files    : 4
+        b) Filenames Length   : 45
+        c) Number Of Chunks   : 1
+        d) Is Compressed?     : Yes
+        e) Size Of First File : 4
+
+   Notes
+   =====
+   a) the number of files within the cabinet
+   b) the total length of all the filenames (including directories), i.e.
+      \test.txt
+      \1\test1.txt
+      \2\test2.txt
+      \3\test3.txt
+      = 9 + 12 + 12 + 12
+      = 45
+   c) the number of data chunks used (depends on the size of the files)
+      i.e. once a certain number of bytes have been compressed a new data
+           chuck is created, but this value isn't fixed (depends on source)
+   d) whether the cabinet data has been compressed (usually yes)
+   e) the uncompressed size of the first file in the cabinet (in bytes)
+
+   Even if you don't know all the required information, by looking at the
+   password recovered you may be able to guess the incorrect characters
+
+[/ignoreLength] (PFTW v2.03+)
+
+   ignores the password length determined by this utility, because certain
+   character combinations in the password can return the wrong value
+
+[/dumpHeaders] (PFTW v2.03+)
+
+   dumps the encrypted and decrypted packagefortheweb file headers.
+   Can be used to analyse the length and validity of the password and to
+   determine which characters are invalid
+
+------------------------------------------------------------------------------
+
+Note: Supports InstallShield PackageForTheWeb v1.02 - v4.01
+      (v2.03+ doesn't guarantee passwords that are greater than 28 characters)

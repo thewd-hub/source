@@ -1,0 +1,13 @@
+Microsoft Access Workgroup Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  aspw <workgroup information file>
+
+<workgroup information file>
+
+   the microsoft access workgroup information file (*.mdw)
+
+------------------------------------------------------------------------------
+
+Note: Supports Microsoft Access 95/97/2000/2002/2003

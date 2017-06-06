@@ -1,0 +1,47 @@
+#define IDI_DEFAULTICON		101
+
+#define APSTUDIO_READONLY_SYMBOLS
+#include "afxres.h"
+#undef APSTUDIO_READONLY_SYMBOLS
+
+// English (U.K.) resources
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+#endif
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_DEFAULTICON	ICON	DISCARDABLE	"..\..\..\_Shared Resources\windowCog.ico"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080904b0"
+        BEGIN
+            VALUE "FileDescription", "Microsoft VBA6 Projects Password Cracker\0"
+            VALUE "FileVersion", "1.00\0"
+            VALUE "InternalName", "vba6crk\0"
+            VALUE "LegalCopyright", "Copyright thewd, thewd@hotmail.com\0"
+            VALUE "OriginalFilename", "vba6crk.exe\0"
+            VALUE "ProductName", "Microsoft VBA6 Projects Password Cracker\0"
+            VALUE "ProductVersion", "1.00\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x809, 1200
+    END
+END

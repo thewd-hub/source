@@ -1,0 +1,43 @@
+PowerQuest Drive Image Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  PQdi <image filename>
+             [-bruteforce <start length> <end length> <charset>]
+             [-intelliforce <start> <end> <charset> <tolerance level>]
+             [-dictionary <dictionary filename>]
+
+<image filename>
+
+   the powerquest image filename (*.pqi or *.v2i)
+
+[PowerQuest Image File v4.00+]
+
+-bruteforce <start length> <end length> <charset>
+
+   start the bruteforce search for the password
+   <start length> - start length
+   <end length> - end length
+   <charset> - A (uppercase), a (lowercase), 1 (numbers), ! (special)
+   e.g. dimage.pqi -bruteforce 1 4 Aa
+
+-intelliforce <start> <end> <charset> <tolerance level>
+
+   start the intelliforce search (based on character frequencies)
+   <start> - start length
+   <end> - end length
+   <charset> - A (uppercase), a (lowercase)
+   <tolerance level> - level of tolerance for valid words (1 - 12)
+   e.g. dimage.pqi -intelliforce 1 5 A 4
+
+-dictionary <dictionary filename>
+
+   searches the specified dictionary for a password match
+   <dictionary filename> - filename of the dictionary wordlist
+   e.g. dimage.pqi -dictionary allwords.txt
+
+------------------------------------------------------------------------------
+
+Note: Supports - PowerQuest Drive Image v2.00 - v7.00
+               - PowerQuest V2i Protector v2.00
+               - Norton Ghost v9.00

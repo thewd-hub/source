@@ -1,0 +1,13 @@
+PowerQuest PartitionMagic Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  PQpm <configuration file>
+
+<configuration file>
+
+   the partition magic password configuration file (pqmagic.psw)
+
+------------------------------------------------------------------------------
+
+Note: Supports PowerQuest PartitionMagic v6.00 - v8.02

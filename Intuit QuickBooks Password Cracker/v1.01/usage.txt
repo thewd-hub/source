@@ -1,0 +1,13 @@
+Intuit QuickBooks Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  qbCrk <quickbooks project>
+
+<quickbooks project>
+
+   the quickbooks project file (*.qbw)
+
+------------------------------------------------------------------------------
+
+Note: Supports Intuit QuickBooks v2.00 - v10.00 (2002)

@@ -1,0 +1,13 @@
+PowerQuest BootMagic Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  PQbm <configuration file>
+
+<configuration file>
+
+   the configuration file used by BootMagic (i.e. btmagic.cfg)
+
+------------------------------------------------------------------------------
+
+Note: Supports PowerQuest BootMagic v2.00 - v8.00
