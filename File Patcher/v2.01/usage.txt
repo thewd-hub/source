@@ -1,0 +1,21 @@
+File Patcher
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage  : patcher [options]
+Options:
+
+/executeScript <script filename>
+
+   executes the script filename which patches the specified target
+   (see script parameters.txt)
+   e.g. /executeScript patcher.fpc
+
+/registerExtension
+
+   registers the file type extension .fpc
+   (so scripts can be executed from Windows Explorer)
+
+/unregisterExtension
+
+   unregisters the file type extension .fpc

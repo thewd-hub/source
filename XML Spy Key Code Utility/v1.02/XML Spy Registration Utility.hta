@@ -1,0 +1,768 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!--
+// Title    : XML Spy Registration Utility
+// Version  : v1.02 (23 August 2004)
+// Summary  : Enables the creation of registration key codes (and can view existing key code details)
+// Requires : Microsoft Internet Explorer v5.00.2919.6307+ (Recommend v6.00.2800.1106 - SP1)
+// History  : v1.02 (23 August 2004)
+//            - retrieved user name and company name from the windows registered owner details
+//            - copies the encoded keycode to the clipboard
+//            v1.01 (13 April 2004)
+//            - converted project from windows scripting host file (.wsf) to a HTA application
+//            v1.00 (28 October 2003)
+//            - initial version (as wsf project)
+//-->
+
+
+<head>
+<hta:application
+	id="oHTA"
+	applicationname="XML Spy Registration Utility"
+	version="v1.02"
+	border="thin"
+	borderstyle="normal"
+	caption="yes"
+	icon="D:\\My Projects\\Projects\\_Shared Resources\\defaultScriptFile.ico"
+	navigable="no"
+	maximizebutton="no"
+	minimizebutton="no"
+	showintaskbar="yes"
+	scroll="no"
+	singleinstance="yes"
+	sysmenu="yes"
+	windowstate="normal" />
+<meta http-equiv="Content-Language" content="en-gb">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="MSThemeCompatible" content="no">
+<meta http-equiv="ImageToolbar" content="no">
+<title>XML Spy Registration Utility</title>
+</head>
+
+<style type="text/css">
+<!--
+
+body
+{
+	background-color: #EBF0F1;
+}
+
+.bodytext
+{
+	font-family: verdana;
+	font-size: 11px;
+	color: #000000;
+	font-weight: normal;
+}
+
+a.bodytext
+{
+	color: #0000FF;
+	text-decoration: underline;
+}
+
+a:hover.bodytext
+{
+	color: #FF8800;
+}
+
+.parahead
+{
+	font-family: verdana;
+	font-size: 11px;
+	color: #082A52;
+	font-weight: bold;
+}
+
+a.parahead
+{
+	text-decoration: none;
+}
+
+a:hover.parahead
+{
+	color: #FF8800;
+}
+
+.line
+{
+	border: 1px solid #082A52;
+}
+
+.sendbutton
+{
+	font-family: verdana;
+	font-size: 11px;
+	font-weight: bold;
+	background: #FFFFFF;
+	color: #082A52;
+	border-width: 1px;
+	border-style: solid;
+	width: 166px;
+	height: 20px;
+	cursor: pointer;
+	padding: 0px;
+}
+
+.sendbuttonover
+{
+	font-family: verdana;
+	font-size: 11px;
+	font-weight: bold;
+	background: #FFFFAA;
+	color: #082A52;
+	border-width: 1px;
+	border-style: solid;
+	width: 166px;
+	height: 20px;
+	cursor: pointer;
+	padding: 0px;
+}
+
+//-->
+</style>
+
+<script language="javascript" type="text/javascript">
+<!--
+
+	// returns the form element object
+	function getFormElement(elementName)
+	{
+		if (document.all) return document.all[elementName];
+		else if (document.getElementById) return document.getElementById(elementName);
+		return null;
+	}
+
+	// returns the value of the form element, or if not found, the defaultValue
+	function getFormElementValue(elementName, defaultValue)
+	{
+		var formElement = getFormElement(elementName);
+		return (((formElement) && (formElement.value)) ? formElement.value : defaultValue);
+	}
+
+	// is the form element checked
+	function isFormElementChecked(elementName)
+	{
+		var obj = getFormElement(elementName);
+		return (((obj) && (obj.checked)) ? true : false);
+	}
+
+	// toggle the checkbox element
+	function toggleFormElementCheckbox(elementName)
+	{
+		var obj = getFormElement(elementName)
+		if (obj) obj.checked = !isFormElementChecked(elementName);
+	}
+
+	function changeClassName(obj, className)
+	{
+		obj.className = className;
+	}
+
+	var windowWidth = 560;
+	var windowHeight = 350;
+	var documentWidth = windowWidth - 10;
+	var documentHeight = windowHeight - 29;
+
+	function resizeWindow()
+	{
+		try
+		{
+			if ((document.body) && (document.documentElement)) return window.resizeBy(documentWidth - Math.max(document.documentElement.clientWidth, document.body.clientWidth), documentHeight - Math.max(document.documentElement.clientHeight, document.body.clientHeight));
+			var windowLeft = (screen.availWidth / 2) - (windowWidth / 2);
+			var windowTop = ((screen.availHeight / 2) - (windowHeight / 2)) / 1.5;
+			window.moveTo(((windowLeft <= 0) ? 10 : windowLeft), ((windowTop <= 0) ? 10 : windowTop));
+			window.resizeTo(windowWidth, windowHeight);
+		}
+		catch (e)
+		{
+		}
+	}
+
+	resizeWindow();
+
+	function onloadEventHandler()
+	{
+		resizeWindow();
+	}
+
+//-->
+</script>
+
+<body>
+
+<div id="enc_div" class="line" style="position: absolute; top: 15px; left: 15px; width: 520px; height: 130px;">
+<table border="0" cellpadding="5" cellspacing="2">
+<tr>
+<td class="bodytext" width="100">Product Edition</td>
+<td class="bodytext">
+<select id="enc_productedition" name="enc_productedition" size="1" class="bodytext" onchange="if (this.value == 99) { this.selectedIndex = (parseInt(this.selectedIndex, 10) + 1); } generateKeyCode(); return false;" style="width: 210px;">
+<option value="0" selected>Choose Product Edition...</option>
+<option value="99" style="background-color: #EEEEEE; color: #E00000;">v1.00</option>
+<option value="1">&nbsp;&nbsp;IDE</option>
+<option value="99" style="background-color: #EEEEEE; color: #E00000;">v2.00</option>
+<option value="2">&nbsp;&nbsp;IDE</option>
+<option value="99" style="background-color: #EEEEEE; color: #E00000;">v3.00</option>
+<option value="3">&nbsp;&nbsp;IDE (Lite)</option>
+<option value="4">&nbsp;&nbsp;IDE (Premium)</option>
+<option value="5">&nbsp;&nbsp;B2B Server</option>
+<option value="99" style="background-color: #EEEEEE; color: #E00000;">v4.00</option>
+<option value="6">&nbsp;&nbsp;Suite (All)</option>
+<option value="7">&nbsp;&nbsp;IDE</option>
+<option value="8">&nbsp;&nbsp;XSLT Designer</option>
+<option value="9">&nbsp;&nbsp;Document Editor</option>
+<option value="10">&nbsp;&nbsp;Browser Plugin</option>
+<option value="11">&nbsp;&nbsp;B2B Server</option>
+<option value="99" style="background-color: #EEEEEE; color: #E00000;">v5.00</option>
+<option value="12">&nbsp;&nbsp;Suite (All)</option>
+<option value="13">&nbsp;&nbsp;Enterprise</option>
+<option value="14">&nbsp;&nbsp;Professional</option>
+<option value="15">&nbsp;&nbsp;Home</option>
+<option value="16">&nbsp;&nbsp;Stylevision</option>
+<option value="17">&nbsp;&nbsp;Authentic Desktop</option>
+<option value="99" style="background-color: #EEEEEE; color: #E00000;">2004 (R0-R3)</option>
+<option value="18">&nbsp;&nbsp;Suite (All)</option>
+<option value="19">&nbsp;&nbsp;Enterprise</option>
+<option value="20">&nbsp;&nbsp;Professional</option>
+<option value="21">&nbsp;&nbsp;Home</option>
+<option value="22">&nbsp;&nbsp;Stylevision</option>
+<option value="23">&nbsp;&nbsp;Authentic Desktop</option>
+<option value="24">&nbsp;&nbsp;Mapforce</option>
+</select>
+</td>
+<td class="bodytext">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="bodytext">User Name</td>
+<td><input id="enc_username" name="enc_username" type="text" class="bodytext" size="32" maxlength="20" value="" onkeyup="generateKeyCode();" onchange="generateKeyCode();"></td>
+<td class="bodytext">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="bodytext">Company Name</td>
+<td><input id="enc_companyname" name="enc_companyname" type="text" class="bodytext" size="32" maxlength="20" value="" onkeyup="generateKeyCode();" onchange="generateKeyCode();"></td>
+<td class="bodytext">
+<table border="0" cellspacing="1" cellpadding="0">
+<tr>
+<td><input type="checkbox" name="enc_trial" id="enc_trial" onfocus="if (this.blur) this.blur();" onclick="generateKeyCode();"></td>
+<td class="bodytext" onclick="toggleFormElementCheckbox('enc_trial'); generateKeyCode(); return false;" onfocus="if (this.blur) this.blur();" nowrap onmouseover="this.style.cursor = 'hand';" onmouseout="this.style.cursor = 'default'">&nbsp;30-day key code (trial)</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td nowrap class="bodytext" width="100">Key Code</td>
+<td colspan="2"><input id="enc_keycode" name="enc_keycode" type="text" class="bodytext" size="62" maxlength="128" value="" style="background-color: #EEEEEE" readonly></td>
+</tr>
+</table>
+</div>
+
+<div id="enc_div_label" class="line" style="position: absolute; left: 410px; top: 5px; padding: 1px; background-color: #E4E4E4;"><span style="font-family: verdana; font-size: 10px; color: #404040; font-weight: bold;">ENCODE KEY CODE</span></div>
+
+<div id="dec_div" class="line" style="position: absolute; top: 170px; left: 15px; width: 520px; height: 135px;">
+<table border="0" cellpadding="5" cellspacing="2">
+<tr>
+<td nowrap class="bodytext" width="100">Key Code</td>
+<td><input id="dec_keycode" name="dec_keycode" type="text" class="bodytext" size="62" maxlength="128" value="" onkeyup="decodeKeyCode();" onchange="decodeKeyCode();"></td>
+</tr>
+</table>
+<span id="dec_keycodedetails" class="line" style="position: absolute; top: 35px; left: 10px; width: 498px; height: 90px; overflow: auto; overflow-x: hidden;">&nbsp;</span>
+</div>
+
+<div id="dec_div_label" class="line" style="position: absolute; left: 409px; top: 160px; padding: 1px; background-color: #E4E4E4;"><span style="font-family: verdana; font-size: 10px; color: #404040; font-weight: bold;">DECODE KEY CODE</span></div>
+
+<script language="javascript" type="text/javascript">
+<!--
+
+	// v1.x.x
+	var VERSION_1 = 0x00010000;
+	var VERSION_1_IDE = 0x0001;
+	// v2.x.x
+	var VERSION_2 = 0x00020000;
+	var VERSION_2_IDE = 0x0001;
+	// v3.x.x
+	var VERSION_3 = 0x00040000;
+	var VERSION_3_IDE_LITE = 0x0001;
+	var VERSION_3_IDE_PREMIUM = 0x0002;
+	var VERSION_3_B2BSERVER = 0x0004;
+	// v4.x.x
+	var VERSION_4 = 0x00080000;
+	var VERSION_4_IDE = 0x0001;
+	var VERSION_4_XSLTDESIGNER = 0x0002;
+	var VERSION_4_DOCUMENTEDITOR = 0x0004;
+	var VERSION_4_BROWSERPLUGIN = 0x0008;
+	var VERSION_4_B2BSERVER = 0x0010;
+	var VERSION_4_SUITE = VERSION_4_IDE | VERSION_4_XSLTDESIGNER | VERSION_4_DOCUMENTEDITOR | VERSION_4_BROWSERPLUGIN | VERSION_4_B2BSERVER;
+	// v5.x.x
+	var VERSION_5 = 0x00100000;
+	var VERSION_5_ENTERPRISE = 0x0001;
+	var VERSION_5_PROFESSIONAL = 0x0002;
+	var VERSION_5_HOME = 0x0004;
+	var VERSION_5_STYLEVISION = 0x0008;
+	var VERSION_5_AUTHENTICDESKTOP = 0x0010;
+	var VERSION_5_SUITE = VERSION_5_ENTERPRISE | VERSION_5_PROFESSIONAL | VERSION_5_HOME | VERSION_5_STYLEVISION | VERSION_5_AUTHENTICDESKTOP;
+	// v6.x.x (2004)
+	var VERSION_6 = 0x00200000;
+	var VERSION_6_ENTERPRISE = 0x0001;
+	var VERSION_6_PROFESSIONAL = 0x0002;
+	var VERSION_6_HOME = 0x0004;
+	var VERSION_6_STYLEVISION = 0x0008;
+	var VERSION_6_AUTHENTICDESKTOP = 0x0010;
+	var VERSION_6_MAPFORCE = 0x0020;
+	var VERSION_6_SUITE = VERSION_6_ENTERPRISE | VERSION_6_PROFESSIONAL | VERSION_6_HOME | VERSION_6_STYLEVISION | VERSION_6_AUTHENTICDESKTOP | VERSION_6_MAPFORCE;
+
+	var USENAMECRC = 0x01;
+	var USECOMPANYCRC = 0x02;
+	var USEKEYCODECRC = 0x04;
+	var USEPRODUCTVERSION = 0x08;
+	var GETEXPIRYDATE = 0x10;
+	var GETSTARTDATE = 0x20;
+	var USERCOUNT = 0x40;
+	var TESTPRODUCTNAMECRC = 0x80;
+
+	var CRCTABLE = new Array(
+		0x0000, 0xC0C1, 0xC181, 0x0140, 0xC301, 0x03C0, 0x0280, 0xC241, 0xC601, 0x06C0, 0x0780, 0xC741, 0x0500, 0xC5C1, 0xC481, 0x0440,
+		0xCC01, 0x0CC0, 0x0D80, 0xCD41, 0x0F00, 0xCFC1, 0xCE81, 0x0E40, 0x0A00, 0xCAC1, 0xCB81, 0x0B40, 0xC901, 0x09C0, 0x0880, 0xC841,
+		0xD801, 0x18C0, 0x1980, 0xD941, 0x1B00, 0xDBC1, 0xDA81, 0x1A40, 0x1E00, 0xDEC1, 0xDF81, 0x1F40, 0xDD01, 0x1DC0, 0x1C80, 0xDC41,
+		0x1400, 0xD4C1, 0xD581, 0x1540, 0xD701, 0x17C0, 0x1680, 0xD641, 0xD201, 0x12C0, 0x1380, 0xD341, 0x1100, 0xD1C1, 0xD081, 0x1040,
+		0xF001, 0x30C0, 0x3180, 0xF141, 0x3300, 0xF3C1, 0xF281, 0x3240, 0x3600, 0xF6C1, 0xF781, 0x3740, 0xF501, 0x35C0, 0x3480, 0xF441,
+		0x3C00, 0xFCC1, 0xFD81, 0x3D40, 0xFF01, 0x3FC0, 0x3E80, 0xFE41, 0xFA01, 0x3AC0, 0x3B80, 0xFB41, 0x3900, 0xF9C1, 0xF881, 0x3840,
+		0x2800, 0xE8C1, 0xE981, 0x2940, 0xEB01, 0x2BC0, 0x2A80, 0xEA41, 0xEE01, 0x2EC0, 0x2F80, 0xEF41, 0x2D00, 0xEDC1, 0xEC81, 0x2C40,
+		0xE401, 0x24C0, 0x2580, 0xE541, 0x2700, 0xE7C1, 0xE681, 0x2640, 0x2200, 0xE2C1, 0xE381, 0x2340, 0xE101, 0x21C0, 0x2080, 0xE041,
+		0xA001, 0x60C0, 0x6180, 0xA141, 0x6300, 0xA3C1, 0xA281, 0x6240, 0x6600, 0xA6C1, 0xA781, 0x6740, 0xA501, 0x65C0, 0x6480, 0xA441,
+		0x6C00, 0xACC1, 0xAD81, 0x6D40, 0xAF01, 0x6FC0, 0x6E80, 0xAE41, 0xAA01, 0x6AC0, 0x6B80, 0xAB41, 0x6900, 0xA9C1, 0xA881, 0x6840,
+		0x7800, 0xB8C1, 0xB981, 0x7940, 0xBB01, 0x7BC0, 0x7A80, 0xBA41, 0xBE01, 0x7EC0, 0x7F80, 0xBF41, 0x7D00, 0xBDC1, 0xBC81, 0x7C40,
+		0xB401, 0x74C0, 0x7580, 0xB541, 0x7700, 0xB7C1, 0xB681, 0x7640, 0x7200, 0xB2C1, 0xB381, 0x7340, 0xB101, 0x71C0, 0x7080, 0xB041,
+		0x5000, 0x90C1, 0x9181, 0x5140, 0x9301, 0x53C0, 0x5280, 0x9241, 0x9601, 0x56C0, 0x5780, 0x9741, 0x5500, 0x95C1, 0x9481, 0x5440,
+		0x9C01, 0x5CC0, 0x5D80, 0x9D41, 0x5F00, 0x9FC1, 0x9E81, 0x5E40, 0x5A00, 0x9AC1, 0x9B81, 0x5B40, 0x9901, 0x59C0, 0x5880, 0x9841,
+		0x8801, 0x48C0, 0x4980, 0x8941, 0x4B00, 0x8BC1, 0x8A81, 0x4A40, 0x4E00, 0x8EC1, 0x8F81, 0x4F40, 0x8D01, 0x4DC0, 0x4C80, 0x8C41,
+		0x4400, 0x84C1, 0x8581, 0x4540, 0x8701, 0x47C0, 0x4680, 0x8641, 0x8201, 0x42C0, 0x4380, 0x8341, 0x4100, 0x81C1, 0x8081, 0x4040);
+
+	var baseEncoding = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "K", "M", "N", "P", "S", "T", "U", "X", "a", "b", "c", "d", "e", "f", "g", "h", "k", "m", "q", "s", "t", "u", "z");
+	var productVersion = 0;
+
+	// returns the character code for the ascii character (32-126)
+	function getCharCode(asciiCharacter)
+	{
+		if (asciiCharacter.charCodeAt) return asciiCharacter.charCodeAt(0);
+		var asciiCharacters = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+		for (var i = 0; i < asciiCharacters.length; i++) if (asciiCharacter == asciiCharacters.charAt(i)) return (i + 32);
+		return 0;
+	}
+
+	// gets the character from the encodedIndex within the baseEncoding array
+	function getBaseEncodingCharacter(encodedIndex)
+	{
+		return (((encodedIndex >= 0) && (encodedIndex< baseEncoding.length)) ? baseEncoding[encodedIndex] : "?");
+	}
+
+	// gets the index of the encodedCharacter within the baseEncoding array
+	function getBaseEncodingIndex(encodedCharacter)
+	{
+		for (var i = 0; i < baseEncoding.length; i++) if (baseEncoding[i] == encodedCharacter) return i;
+		return -1;
+	}
+
+	// gets the crc value from a byte array
+	function getCRCValue(stringArray)
+	{
+		var crcValue = 0;
+		for (var i = 0; i < stringArray.length; i++) crcValue = ((CRCTABLE[((crcValue & 0x000000FF) ^ stringArray[i]) & 0xFF]) ^ ((crcValue >> 8) & 0xFF));
+		return crcValue;
+	}
+
+	// gets the crc value from a string
+	function getCRCValueFromString(stringValue)
+	{
+		var stringArray = new Array();
+		for (var i = 0; i < stringValue.length; i++) stringArray[i] = getCharCode(stringValue.charAt(i));
+		return getCRCValue(stringArray);
+	}
+
+	// gets the crc value from a hexadecimal byte array
+	function getCRCValueFromHexadecimalArray(stringHexadecimalArray)
+	{
+		var stringArray = new Array();
+		for (var i = 0; i < stringHexadecimalArray.length; i++) stringArray[i] = parseInt(stringHexadecimalArray[i], 16);
+		return getCRCValue(stringArray);
+	}
+
+	// converts a decimal to the hexadecimal string representation
+	function convertNumberToHexadecimalString(decimalNumber)
+	{
+		if (decimalNumber == 0) return ("00");
+		else if (decimalNumber <= 15) return ("0" + (decimalNumber.toString(16).toUpperCase()));
+		else return (decimalNumber.toString(16).toUpperCase());
+	}
+
+	// converts a decimal to a 2-digit decimal number
+	function convertNumberToTwoDigitNumber(decimalNumber)
+	{
+		return ((decimalNumber < 10) ? ("0" + decimalNumber) : decimalNumber);
+	}
+
+	// generates the decoded key code from the specified information. returns a byte array
+	function generateDecodedKeyCode(userName, companyName, generateTrialKey)
+	{
+		var decodedKeyCode = new Array();
+		var nextArrayIndex = 0;
+
+		// control codes
+		var controlCode = (USENAMECRC | USECOMPANYCRC | USEPRODUCTVERSION | USERCOUNT | TESTPRODUCTNAMECRC);
+		// is this to be a trial key?
+		if (generateTrialKey) controlCode |= GETEXPIRYDATE;
+
+		decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(controlCode);
+
+		// user information crc
+		var userNameCRC = getCRCValueFromString(userName);
+		var companyNameCRC = getCRCValueFromString(companyName + "/XMLSpy");
+		var userInformationArray = new Array();
+		userInformationArray[0] = (userNameCRC & 0xFF);
+		userInformationArray[1] = ((userNameCRC >> 8) & 0xFF);
+		userInformationArray[2] = (companyNameCRC & 0xFF);
+		userInformationArray[3] = ((companyNameCRC >> 8) & 0xFF);
+
+		// product version
+		if (controlCode & USEPRODUCTVERSION)
+		{
+			if (productVersion & VERSION_1) userInformationArray[4] = 0x31;
+			else if (productVersion & VERSION_2) userInformationArray[4] = 0x31;
+			else if (productVersion & VERSION_3) userInformationArray[4] = 0x35;
+			else if (productVersion & VERSION_4) userInformationArray[4] = 0x36;
+			else if (productVersion & VERSION_5) userInformationArray[4] = 0x37;
+			else if (productVersion & VERSION_6) userInformationArray[4] = 0x38;
+		}
+		var userInformationCRC = getCRCValue(userInformationArray);
+		decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(userInformationCRC & 0xFF);
+		decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString((userInformationCRC >> 8) & 0xFF);
+
+		var numberOfUsers = 0xFFFF;
+		// number of users (100 users)
+		if (controlCode & USEPRODUCTVERSION) numberOfUsers = 0x0064;
+		decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(numberOfUsers & 0xFF);
+		decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString((numberOfUsers >> 8) & 0xFF);
+
+		// product name crc
+		var productNameCRC = getCRCValueFromString("XMLSpy");
+		decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(productNameCRC & 0xFF);
+		decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString((productNameCRC >> 8) & 0xFF);
+
+		// generating trial key
+		if (controlCode & GETEXPIRYDATE)
+		{
+			// expiry date (current date + 30 days)
+			var currentDate = new Date();
+			var expiryDate = parseInt(currentDate.getTime() / 1000, 10) + 2592000;
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(expiryDate & 0xFF);
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString((expiryDate >> 8) & 0xFF);
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString((expiryDate >> 16) & 0xFF);
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString((expiryDate >> 24) & 0xFF);
+		}
+
+		// generate start date
+		if (controlCode & GETSTARTDATE)
+		{
+			// start date - current date
+			var currentDate = new Date();
+			var startDate = parseInt(currentDate.getTime() / 1000, 10);
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(startDate & 0xFF);
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString((startDate >> 8) & 0xFF);
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString((startDate >> 16) & 0xFF);
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString((startDate >> 24) & 0xFF);
+		}
+
+		// key properties
+
+		// v1.x.x
+		if (productVersion & VERSION_1)
+		{
+			if (productVersion & VERSION_1_IDE) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x4E);
+		}
+		// v2.x.x
+		if (productVersion & VERSION_2)
+		{
+			if (productVersion & VERSION_2_IDE) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x4E);
+		}
+		// v3.x.x
+		if (productVersion & VERSION_3)
+		{
+			if (productVersion & VERSION_3_IDE_LITE) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x4F);
+			if (productVersion & VERSION_3_IDE_PREMIUM) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x50);
+			if (productVersion & VERSION_3_B2BSERVER) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x53);
+		}
+		// v4.x.x
+		if (productVersion & VERSION_4)
+		{
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x6E);
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x6F);
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x50);
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x63);
+			if (productVersion & VERSION_4_IDE) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x49);
+			if (productVersion & VERSION_4_XSLTDESIGNER) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x54);
+			if (productVersion & VERSION_4_DOCUMENTEDITOR) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x44);
+			if (productVersion & VERSION_4_BROWSERPLUGIN) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x42);
+			if (productVersion & VERSION_4_B2BSERVER) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x53);
+		}
+		// v5.x.x
+		if (productVersion & VERSION_5)
+		{
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x30);
+			if (productVersion & VERSION_5_ENTERPRISE) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x45);
+			if (productVersion & VERSION_5_PROFESSIONAL) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x50);
+			if (productVersion & VERSION_5_HOME) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x48);
+			if (productVersion & VERSION_5_STYLEVISION) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x53);
+			if (productVersion & VERSION_5_AUTHENTICDESKTOP) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x44);
+		}
+		// v6.x.x (2004)
+		if (productVersion & VERSION_6)
+		{
+			//decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x30); // rtm
+			//decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x31); // release 1
+			//decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x32); // release 2
+			decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x33); // release 3
+			if (productVersion & VERSION_6_ENTERPRISE) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x45);
+			if (productVersion & VERSION_6_PROFESSIONAL) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x50);
+			if (productVersion & VERSION_6_HOME) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x48);
+			if (productVersion & VERSION_6_STYLEVISION) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x53);
+			if (productVersion & VERSION_6_AUTHENTICDESKTOP) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x44);
+			if (productVersion & VERSION_6_MAPFORCE) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x46);
+		}
+
+		// add zero padding (so key is in groups of 4 bytes)
+		for (var i = 4; i > (4 - (nextArrayIndex % 4)); i--) decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x00);
+
+		// key crc
+		var keyCRC = getCRCValueFromHexadecimalArray(decodedKeyCode.slice(0, nextArrayIndex));
+		decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(keyCRC & 0xFF);
+		decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString((keyCRC >> 8) & 0xFF);
+
+		// add pertinent key length
+		var keyLength = nextArrayIndex;
+		decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(0x00);
+		decodedKeyCode[nextArrayIndex++] = convertNumberToHexadecimalString(keyLength);
+		return decodedKeyCode;
+	}
+
+	// encodes the supplied key code
+	function encodeKeyCode(decodedKeyCode)
+	{
+		if (decodedKeyCode.length < 12) return "Invalid Key Code generated";
+
+		var encodedKeyCode = "";
+		var decodedKeyCodeGroups = new Array();
+		var numberOfKeyGroups = parseInt(decodedKeyCode.length / 4, 10);
+		for (var i = 0; i < numberOfKeyGroups; i++) decodedKeyCodeGroups[i] = parseInt(decodedKeyCode[(i * 4) + 3] + decodedKeyCode[(i * 4) + 2] + decodedKeyCode[(i * 4) + 1] + decodedKeyCode[i * 4], 16);
+
+		// handle each of the key groups
+		for (var i = 0; i < numberOfKeyGroups; i++)
+		{
+			for (var j = 0; j < 6; j++)
+			{
+				encodedKeyCode += getBaseEncodingCharacter((decodedKeyCodeGroups[i] % 41) & 0xFF);
+				decodedKeyCodeGroups[i] = parseInt(decodedKeyCodeGroups[i] / 41, 10);
+			}
+
+			if (i < (numberOfKeyGroups - 1)) encodedKeyCode += "-";
+		}
+
+		return encodedKeyCode;
+	}
+
+	// collect the supplied information and generate a key code
+	function generateKeyCode()
+	{
+		var productEdition = getFormElementValue("enc_productedition", 0);
+		var userName = getFormElementValue("enc_username", "");
+		var companyName = getFormElementValue("enc_companyname", "");
+		var generateTrialKey = isFormElementChecked("enc_trial");
+		var keyCodeInput = getFormElement("enc_keycode")
+		if (!keyCodeInput) return false;
+		keyCodeInput.value = "";
+
+		// validate inputs
+		var isError = false;
+		if ((productEdition <= 0) || (productEdition == 99)) isError = true;
+		if ((!userName) || (userName.length <= 0)) isError = true;
+		if ((!companyName) || (companyName.length <= 0)) isError = true;
+
+		// determine version
+		productVersion = 0;
+		if (productEdition == 1) productVersion = (VERSION_1 | VERSION_1_IDE);
+		else if (productEdition == 2) productVersion = (VERSION_2 | VERSION_2_IDE);
+		else if (productEdition == 3) productVersion = (VERSION_3 | VERSION_3_IDE_LITE);
+		else if (productEdition == 4) productVersion = (VERSION_3 | VERSION_3_IDE_PREMIUM);
+		else if (productEdition == 5) productVersion = (VERSION_3 | VERSION_3_B2BSERVER);
+		else if (productEdition == 6) productVersion = (VERSION_4 | VERSION_4_SUITE);
+		else if (productEdition == 7) productVersion = (VERSION_4 | VERSION_4_IDE);
+		else if (productEdition == 8) productVersion = (VERSION_4 | VERSION_4_XSLTDESIGNER);
+		else if (productEdition == 9) productVersion = (VERSION_4 | VERSION_4_DOCUMENTEDITOR);
+		else if (productEdition == 10) productVersion = (VERSION_4 | VERSION_4_BROWSERPLUGIN);
+		else if (productEdition == 11) productVersion = (VERSION_4 | VERSION_4_B2BSERVER);
+		else if (productEdition == 12) productVersion = (VERSION_5 | VERSION_5_SUITE);
+		else if (productEdition == 13) productVersion = (VERSION_5 | VERSION_5_ENTERPRISE);
+		else if (productEdition == 14) productVersion = (VERSION_5 | VERSION_5_PROFESSIONAL);
+		else if (productEdition == 15) productVersion = (VERSION_5 | VERSION_5_HOME);
+		else if (productEdition == 16) productVersion = (VERSION_5 | VERSION_5_STYLEVISION);
+		else if (productEdition == 17) productVersion = (VERSION_5 | VERSION_5_AUTHENTICDESKTOP);
+		else if (productEdition == 18) productVersion = (VERSION_6 | VERSION_6_SUITE);
+		else if (productEdition == 19) productVersion = (VERSION_6 | VERSION_6_ENTERPRISE);
+		else if (productEdition == 20) productVersion = (VERSION_6 | VERSION_6_PROFESSIONAL);
+		else if (productEdition == 21) productVersion = (VERSION_6 | VERSION_6_HOME);
+		else if (productEdition == 22) productVersion = (VERSION_6 | VERSION_6_STYLEVISION);
+		else if (productEdition == 23) productVersion = (VERSION_6 | VERSION_6_AUTHENTICDESKTOP);
+		else if (productEdition == 24) productVersion = (VERSION_6 | VERSION_6_MAPFORCE);
+		else isError = true;
+
+		// error occurred, skip generation
+		if (isError) return false;
+
+		// generate key code & encode it
+		keyCodeInput.value = encodeKeyCode(generateDecodedKeyCode(userName, companyName, generateTrialKey));
+		if (window.clipboardData) window.clipboardData.setData("Text", keyCodeInput.value);
+		return true;
+	}
+
+	// decode the supplied key code
+	function decodeKeyCode()
+	{
+		var keyCode = getFormElementValue("dec_keycode", 0);
+		var keyCodeDetailsInput = getFormElement("dec_keycodedetails");
+		if (!keyCodeDetailsInput) return false;
+		keyCodeDetailsInput.innerHTML = "&nbsp;";
+
+		// validate input
+		if ((!keyCode) || (keyCode.length < 20)) return false;
+
+		var decodedKeyCode = new Array();
+		var decodedKeyCodeIndex = 0;
+		var numberOfKeyGroups = parseInt(keyCode.length / 6, 10);
+
+		// handle each of the key groups
+		for (var i = 0; i < numberOfKeyGroups; i++)
+		{
+			var startingIndex = (i * 7);
+			var decodedKeyCodeInt = 0;
+
+			for (var j = 5; j >= 0; j--)
+			{
+				decodedKeyCodeInt *= 41;
+				decodedKeyCodeInt += getBaseEncodingIndex(keyCode.charAt(startingIndex + j));
+			}
+
+			decodedKeyCode[decodedKeyCodeIndex + 0] = convertNumberToHexadecimalString(decodedKeyCodeInt & 0xFF);
+			decodedKeyCode[decodedKeyCodeIndex + 1] = convertNumberToHexadecimalString((decodedKeyCodeInt >> 8) & 0xFF);
+			decodedKeyCode[decodedKeyCodeIndex + 2] = convertNumberToHexadecimalString((decodedKeyCodeInt >> 16) & 0xFF);
+			decodedKeyCode[decodedKeyCodeIndex + 3] = convertNumberToHexadecimalString((decodedKeyCodeInt >> 24) & 0xFF);
+			decodedKeyCodeIndex += 4;
+		}
+
+		// check decoded key code length
+		if (decodedKeyCode.length < 12) return ralse;
+
+		// get information from decoded key code
+		var monthNames = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+		var controlCode = parseInt(decodedKeyCode[0], 16);
+		var userInformationCRC = ("0x" + decodedKeyCode[2] + decodedKeyCode[1]);
+		var numberOfUsers = ((parseInt(decodedKeyCode[4], 16) * 0x100) + parseInt(decodedKeyCode[3], 16));
+		var productNameCRC = ("0x" + decodedKeyCode[6] + decodedKeyCode[5]);
+		var keyCRC = ("0x" + decodedKeyCode[decodedKeyCode.length - 3] + decodedKeyCode[decodedKeyCode.length - 4]);
+		var expiryDateTimestamp;
+		var expiryDate;
+		var startDateTimestamp;
+		var startDate;
+		var keyProperties = "";
+		var keyPropertiesIndex = 7;
+
+		// is trial key?
+		if (controlCode & GETEXPIRYDATE)
+		{
+			expiryDateTimestamp = decodedKeyCode[10] + decodedKeyCode[9] + decodedKeyCode[8] + decodedKeyCode[7];
+			expiryDate = new Date(parseInt(expiryDateTimestamp, 16) * 1000);
+			keyPropertiesIndex += 4;
+		}
+
+		// get start date
+		if (controlCode & GETSTARTDATE)
+		{
+			var startDateIndex = ((controlCode & GETEXPIRYDATE) ? 11 : 7);
+			startDateTimestamp = decodedKeyCode[startDateIndex + 3] + decodedKeyCode[startDateIndex + 2] + decodedKeyCode[startDateIndex + 1] + decodedKeyCode[startDateIndex + 0];
+			startDate = new Date(parseInt(startDateTimestamp, 16) * 1000);
+			keyPropertiesIndex += 4;
+		}
+
+		for (var i = keyPropertiesIndex; i < (decodedKeyCode.length - 4); i++)
+		{
+			if (decodedKeyCode[i] == 0x00) continue;
+			keyProperties += ("0x" + decodedKeyCode[i] + " ");
+		}
+
+		// display information
+		var outputString = "<span class=\"bodytext\" style=\"font-size: 10px\">";
+		outputString += "<b>Key Code</b>: " + decodedKeyCode.toString() + "<br>";
+		if (controlCode & USERCOUNT) outputString += "<b>Number of Users</b>: " + numberOfUsers + "<br>";
+		outputString += "<b>User Information CRC</b>: " + userInformationCRC + " (";
+		if (controlCode & USENAMECRC) outputString += "Name, ";
+		if (controlCode & USECOMPANYCRC) outputString += "Company Name, ";
+		if (controlCode & USEKEYCODECRC) outputString += "Key, ";
+		if (controlCode & USEPRODUCTVERSION) outputString += "Product Version, ";
+		if (outputString.charAt(outputString.length - 1) != '(')
+		{
+			outputString = outputString.substring(0, outputString.length - 2);
+			outputString += ")";
+		}
+		else
+		{
+			outputString = outputString.substring(0, outputString.length - 2);
+		}
+		outputString += "<br>";
+		if (controlCode & TESTPRODUCTNAMECRC) outputString += "<b>Product Name CRC</b>: " + productNameCRC + "<br>";
+		outputString += "<b>Key CRC</b>: " + keyCRC + "<br>";
+		if (controlCode & GETSTARTDATE) outputString += "<b>Key Start Date</b>: " + convertNumberToTwoDigitNumber(startDate.getUTCDate()) + " " + monthNames[startDate.getUTCMonth()] + " " + startDate.getUTCFullYear() + " " + convertNumberToTwoDigitNumber(startDate.getUTCHours()) + ":" + convertNumberToTwoDigitNumber(startDate.getUTCMinutes()) + ":" + convertNumberToTwoDigitNumber(startDate.getUTCSeconds()) + "<br>";
+		if (controlCode & GETEXPIRYDATE) outputString += "<b>Key Expiry Date</b>: " + convertNumberToTwoDigitNumber(expiryDate.getUTCDate()) + " " + monthNames[expiryDate.getUTCMonth()] + " " + expiryDate.getUTCFullYear() + " " + convertNumberToTwoDigitNumber(expiryDate.getUTCHours()) + ":" + convertNumberToTwoDigitNumber(expiryDate.getUTCMinutes()) + ":" + convertNumberToTwoDigitNumber(expiryDate.getUTCSeconds()) + "<br>";
+		outputString += "<b>Key Properties</b>: " + keyProperties + "<br>";
+		outputString += "</span>";
+
+		keyCodeDetailsInput.innerHTML = outputString;
+		return true;
+	}
+
+	// retrieves registrated information from the windows registry
+	function getRegistratedInformation()
+	{
+		var userNameInput = getFormElement("enc_username");
+		var userCompanyInput = getFormElement("enc_companyname");
+		if ((!userNameInput) || (!userCompanyInput)) return false;
+
+		// try Windows NT sub root and then Windows sub root
+		try
+		{
+			userNameInput.value = objWshShell.RegRead("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\RegisteredOwner");
+			userCompanyInput.value = objWshShell.RegRead("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\RegisteredOrganization");
+		}
+		catch(ex)
+		{
+			try
+			{
+				userNameInput.value = objWshShell.RegRead("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RegisteredOwner");
+				userCompanyInput.value = objWshShell.RegRead("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RegisteredOrganization");
+			}
+			catch (ex)
+			{
+			}
+		}
+
+		return true;
+	}
+
+	var objWshShell = new ActiveXObject("WScript.Shell");
+	getRegistratedInformation();
+
+//-->
+</script>
+
+</body>
+</html>

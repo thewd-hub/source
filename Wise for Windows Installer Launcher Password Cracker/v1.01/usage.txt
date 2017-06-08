@@ -1,0 +1,14 @@
+Wise for Windows Installer Launcher Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  WFWIlauncher <setup launcher>
+
+<setup launcher>
+
+   the setup launcher filename (*.exe)
+
+------------------------------------------------------------------------------
+
+Note: Supports Wise for Windows Installer v1.00 - v6.00
+      Supports Wise for Visual Studio .NET v4.00 - v5.00

@@ -1,0 +1,159 @@
+Keyboard Input Simulator
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+File Header        - #kbInput Script
+Parameter Format   - <Parameter Name>=<Parameter Value>
+Supported Comments - ;...
+                     //...
+                     /*...*/
+
+------------------------------------------------------------------------------
+
+
+
+
+Script Parameters
+==============================================================================
+
+EnableLogging
+
+   Description : enables execution logging to file (true or false)
+   Example     : EnableLogging=true
+                 EnableLogging=false
+
+------------------------------------------------------------------------------
+ScriptName
+
+   Description : name of the script displayed during execution
+   Example     : ScriptName=Example kbInput Script
+
+------------------------------------------------------------------------------
+InitialDelay
+
+   Description : delay before the input script executes (in milliseconds)
+   Example     : InitialDelay=3000 // wait 3 seconds
+
+------------------------------------------------------------------------------
+DictionaryFilename
+
+   Description : dictionary file which the Send function uses to retrive the
+                 words from and send as keyboard input
+   Example     : DictionaryFilename=wordlist.txt
+
+------------------------------------------------------------------------------
+DictionaryWordContainsCharacterStrings
+
+   Description : whether the dictionary words contain any character strings
+   Example     : DictionaryWordContainsCharacterStrings=true
+                 DictionaryWordContainsCharacterStrings=false
+
+------------------------------------------------------------------------------
+Template
+
+   Description : template string that the Send function uses to generate the
+                 words that are sent as keyboard input
+                 {CS-?} specifies the character set to use for the character,
+                 i.e {CS-1} will cycle through the first character set
+   Example     : Template={CS-1}-AAAA-{CS-2}
+                 Template=1234-{CS-1}-AA-{CS-1}{CS-2}
+
+------------------------------------------------------------------------------
+TemplateWordContainsCharacterStrings
+
+   Description : whether the template string contain any character strings
+   Example     : TemplateWordContainsCharacterStrings=true
+                 TemplateWordContainsCharacterStrings=false
+
+------------------------------------------------------------------------------
+TemplateOrder
+
+   Description : the order in which the character strings are used
+   Example     : TemplateOrder=2,1 // 2nd then 1st
+                 TemplateOrder=LTR // left-to-right
+                 TemplateOrder=RTL // right-to-left
+
+------------------------------------------------------------------------------
+CharacterSet
+
+   Description : character sets used in the template string
+   Example     : CharacterSet=ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                 CharacterSet=12345677890
+
+------------------------------------------------------------------------------
+
+
+
+
+Input Script Parameters
+==============================================================================
+
+Send
+
+   Description : simulates keyboard input. supports basic strings, character
+                 strings, dictionary words and template words. also supports
+                 a repeat count and shift (+), ctrl (^) and alt (%) keys. full
+                 list of supported character strings are available from the
+                 Windows Script Host SendKeys function documentation
+   Example     : Send=A                       // send string A
+                 Send=TEST                    // send TEST string
+                 Send=TEST 6                  // send TEST string 6 times
+                 Send=+A                      // send SHIFT+A
+                 Send=^%Z 4                   // send CTRL+ALT+Z 4 times
+                 Send={DICTIONARY_WORD}       // send current dictionary word
+                 Send={TEMPLATE_WORD}         // send current template word
+                 Send={BACKSPACE}             // send BACKSPACE key
+                 Send=+{F10}                  // send SHIFT+F10 key
+
+------------------------------------------------------------------------------
+Sleep
+
+   Description : pause the execution of the input script (in milliseconds)
+   Example     : Sleep=500 // wait 0.5 second
+
+------------------------------------------------------------------------------
+BreakIf
+
+   Description : terminates execution of the input script if condition is true
+   Supported   : WindowTitle <expected window title>
+                 - breaks if window title matches (supports pattern matching)
+   Example     : BreakIf=WindowTitle "Example Window Title"
+
+------------------------------------------------------------------------------
+Label
+
+   Description : identifies points in the input script for repeat statements
+                 to jump to (i.e. RepeatWhile and RepeatUntil)
+   Example     : Label=START_LABEL
+
+------------------------------------------------------------------------------
+Inc
+
+   Description : increments the specified object type (i.e. dictionary word)
+   Supported   : {DICTIONARY_WORD}
+                 - increment dictionary word (i.e. get next dictionary word)
+                 {TEMPLATE_WORD}
+                 - increment template word (i.e. get next template word)
+   Example     : Inc={DICTIONARY_WORD}
+                 Inc={TEMPLATE_WORD}
+
+------------------------------------------------------------------------------
+RepeatWhile
+
+   Description : repeat input script actions while the condition is true
+                 (must specify a valid label name as the jump reference)
+   Supported   : {DICTIONARY_WORD} <label name>
+                 - repeat while there are still dictionary words available
+                 {TEMPLATE_WORD} <table name>
+                 - repeat while there are templates words to be generated
+   Example     : RepeatWhile={DICTIONARY_WORD} L_START
+                 RepeatWhile={TEMPLATE_WORD} L_START
+
+------------------------------------------------------------------------------
+RepeatUntil
+
+   Description : repeat input script actions until the condition is true
+                 (must specify a valid label name as the jump reference)
+   Supported   : Count <end count value> <label name>
+                 - repeat until the counter matches the end value
+   Example     : RepeatUntil=Count 3 L_START

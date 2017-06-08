@@ -1,0 +1,24 @@
+InstallShield InstallFromTheWeb Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  ISiftw [-crc <password crc>]
+               [-wis <configuraion filename>]
+
+-crc <password crc>
+
+   the password crc that is stored within the configuration file (.wis)
+   e.g. -crc 4100660341
+
+-wis <configuration filename>
+
+   automatically extracts the password crc from the configuration file (.wis)
+   e.g. -wis script.wis
+
+------------------------------------------------------------------------------
+
+Note: The InstallFromTheWeb build wizard creates a file called <filename>.rrf
+      which is a Microsoft Cabinet file. The configuration file is contained
+      within this archive (i.e. use winzip to extract <filename>.wis file)
+
+      Supports InstallShield InstallFromTheWeb v2.xx - v3.xx

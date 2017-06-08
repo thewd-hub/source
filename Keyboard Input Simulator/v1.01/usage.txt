@@ -1,0 +1,24 @@
+Keyboard Input Simulator
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage  : kbInput [options]
+Options:
+
+/executeScript <script filename>
+
+   executes the script filename which includes the input script
+   to simulate keyboard input (see script parameters.txt)
+   e.g. /executeScript example.kbInput
+
+/registerExtension
+
+   registers the file type extension .kbInput
+   (so scripts can be executed from Windows Explorer)
+
+/unregisterExtension
+
+   unregisters the file type extension .kbInput
+
+------------------------------------------------------------------------------
+Note: Requires Microsoft Windows 98+ or Windows NT4 SP3+

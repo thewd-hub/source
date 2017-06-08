@@ -1,0 +1,14 @@
+#kbInput Script
+
+ScriptName=Example kbInput Script (3)
+InitialDelay=3000
+
+DictionaryFilename=example3.dict.txt
+
+[Input Script]
+Label=L_START
+Send={DICTIONARY_WORD}
+Send={ENTER}
+Sleep=500
+Inc={DICTIONARY_WORD}
+RepeatWhile={DICTIONARY_WORD} L_START

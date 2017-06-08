@@ -1,0 +1,14 @@
+Setup Factory Password Data Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  sfPassword <setup configuration file>
+
+<setup configuration file>
+
+   the setup configuration file which contains the password sets (irsetup.dat)
+
+------------------------------------------------------------------------------
+
+Note: Supports Setup Factory v5.00 - v6.00
+      (Earlier versions only accept one password and is stored in plaintext)

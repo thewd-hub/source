@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<packet version="1.0" packet-version="?" num="?" network_device="?" dongle_type="CodeMeter">
+	<general refresh-date="26/11/2013" beta-expiration="03-Mar-2012" />
+	<customer-data>
+		<company-name>AccessData</company-name>
+		<company-address1>384 South 400 West</company-address1>
+		<company-address2>Suite 200</company-address2>
+		<company-city>Lindon</company-city>
+		<company-state>Utah</company-state>
+		<company-country>USA</company-country>
+		<company-zip>84042</company-zip>
+		<contact-name>AccessData</contact-name>
+		<contact-phone>801.377.5410</contact-phone>
+		<contact-email>support@accessdata.com</contact-email>
+	</customer-data>
+	<products>
+		<product name="prtk" client-instance-count="1001" accelerator-cost="15" expiration="?" />
+		<product name="dna" max-client-count="1002" accelerator-cost="15" expiration="?" />
+
+		<product name="ms.office.rainbow.tables" expiration="1" />
+		<product name="ms.office.hash.tables" expiration="1" />
+		<product name="pdf.hash.tables" expiration="1" />
+		<product name="lan.hash.tables" expiration="1" />
+
+		<product name="ftk" client-instance-count="1010" worker-instance-count="1010" debug-instance-count="1010" expiration="?" />
+		<product name="ftkpro" client-instance-count="1011" worker-instance-count="1011" expiration="?" />
+		<product name="ftklab" client-instance-count="1012" worker-instance-count="1012" expiration="?" />
+		<product name="ftkinternational" expiration="?" />
+		<product name="ltuaddon" client-instance-count="1013" expiration="?" />
+		<product name="glyphreader" client-instance-count="1014" expiration="?" />
+		<product name="cerberus" client-instance-count="1015" expiration="?" />
+		<product name="visualization" client-instance-count="1016" expiration="?" />
+		<product name="nfield" expiration="?" />
+		<product name="resolutionone" client-instance-count="1017" worker-instance-count="1017" expiration="?" />
+
+		<product name="ftk-reviewer" expiration="?" />
+		<product name="ftkee" expiration="?" />
+		<product name="asia" expiration="?" />
+		<product name="superftk" expiration="?" />
+		<product name="mobile" expiration="?" />
+		<product name="stego" expiration="?" />
+
+		<product name="ftkenter" client-instance-count="1030" worker-instance-count="1030" expiration="?" />
+		<product name="silentrunner" worker-instance-count="1031" expiration="?" />
+		<product name="silentrunnerprivacy" worker-instance-count="1032" expiration="?" />
+		<product name="cirt" client-instance-count="1033" expiration="?" />
+		<product name="enterprise starter bundle" client-instance-count="1030" worker-instance-count="1030" expiration="?" />
+
+		<product name="adlab" client-instance-count="1050" worker-instance-count="1050" expiration="?" />
+		<product name="adlablite" client-instance-count="1051" worker-instance-count="1051" expiration="?" />
+		<product name="adlabconnections" client-instance-count="1052" expiration="?" />
+
+		<product name="adtriage" client-instance-count="1060" expiration="?" />
+		<product name="adtriageusage" client-instance-count="1061" expiration="?" />
+		<product name="adtriageinternational" client-instance-count="1062" expiration="?" />
+
+		<product name="eDisc" worker-instance-count="1070" expiration="?" />
+		<product name="adeca" client-instance-count="1071" expiration="?" />
+		<product name="adecalite" client-instance-count="1072" expiration="?" />
+		<product name="cvg" client-instance-count="1073" expiration="?" />
+		<product name="summationpro" client-instance-count="1074" worker-instance-count="1074" expiration="?" />
+		<product name="summationsolo" client-instance-count="1075" worker-instance-count="1075" expiration="?" />
+		<product name="summationexpress" client-instance-count="1076" worker-instance-count="1076" expiration="?" />
+		<product name="summationmobile" client-instance-count="1077" worker-instance-count="1077" expiration="?" />
+		<product name="insight" client-instance-count="1078" worker-instance-count="1078" expiration="?" />
+		<product name="summationreader" worker-instance-count="1079" expiration="?" />
+
+		<product name="rv" client-instance-count="1080" expiration="?" />
+
+		<product name="leadtools" client-instance-count="1090" expiration="?" />
+	</products>
+</packet>

@@ -1,0 +1,6 @@
+#File Patcher Script
+
+ScriptName=Example Script
+Filename=example.exe
+Filesize=10000
+Address=0x1000:0x75:0xEB

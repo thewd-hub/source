@@ -1,0 +1,18 @@
+cyScape Licence Key Utility
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage  : cyScapeKey <licence filename> [/createLicence]
+
+<licence filename>
+
+   the licence filename to parse (if /createLicence argument is ommitted)
+
+/createLicence
+
+   include this argument if you wish to create a new licence file
+   e.g. licence.lic /createLicence
+
+------------------------------------------------------------------------------
+
+Note: Supports BrowserHawk & CountryHawk (ActiveX/COM/.NET and Java editions)

@@ -1,0 +1,16 @@
+#kbInput Script
+
+ScriptName=Example kbInput Script (2)
+InitialDelay=3000
+
+Template= {CS-1}{CS-2}
+TemplateOrder=2,1
+CharacterSet=1234567890
+CharacterSet=ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+[Input Script]
+Label=L_START
+Send={TEMPLATE_WORD}
+Send={ENTER}
+Inc={TEMPLATE_WORD}
+RepeatWhile={TEMPLATE_WORD} L_START

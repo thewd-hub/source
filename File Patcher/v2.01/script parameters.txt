@@ -1,0 +1,42 @@
+File Patcher
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+File Header        - #File Patcher Script
+Parameter Format   - <Parameter Name>=<Parameter Value>
+Supported Comments - ;...
+                     //...
+                     /*...*/
+
+==============================================================================
+
+ScriptName
+
+   the displayed name of the script
+   Values  : <string>
+   Example : ScriptName=Example Script
+
+ScriptDescription
+
+   a description about the script
+   Values  : <string>
+   Example : ScriptDescription=Demonstration of a File Patcher script
+
+Filename
+
+   filename of the target application
+   Values  : <string>
+   Example : Filename=example.exe
+
+Filesize
+
+   filesize of the target application
+   Values  : <integer>
+   Example : Filesize=10000
+
+Address
+
+   offset address and the details of the original and new byte
+   (format: Address=<offset address>:<original byte>:<new byte>)
+   Values  : <string>
+   Example : Address=0x1000:0x75:0xEB

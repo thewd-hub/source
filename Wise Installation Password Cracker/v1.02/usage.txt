@@ -1,0 +1,14 @@
+Wise Installer Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  WiseCRK <setup filename> [/extract <output filename>]
+
+<setup filename>
+
+   the setup installation filename (*.exe)
+
+/extract <output filename>
+
+   dumps the script file to the specified filename
+   e.g. /extract script.bin

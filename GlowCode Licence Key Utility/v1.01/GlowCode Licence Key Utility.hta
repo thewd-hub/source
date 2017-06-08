@@ -1,0 +1,365 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<hta:application
+	id="oHTA"
+	applicationname="GlowCode Licence Key Utility"
+	version="v1.01"
+	border="thin"
+	borderstyle="normal"
+	caption="yes"
+	icon="D:\\My Projects\\Projects\\_Shared Resources\\defaultScriptFile.ico"
+	navigable="no"
+	maximizebutton="no"
+	minimizebutton="no"
+	showintaskbar="yes"
+	scroll="no"
+	singleinstance="yes"
+	sysmenu="yes"
+	windowstate="normal" />
+<meta http-equiv="Content-Language" content="en-gb">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="MSThemeCompatible" content="no">
+<meta http-equiv="ImageToolbar" content="no">
+<title>GlowCode Licence Key Utility</title>
+</head>
+
+<style type="text/css">
+<!--
+
+body
+{
+	background-color: #EBF0F1;
+}
+
+.titletext
+{
+	font-family: verdana;
+	font-size: 11px;
+	color: #404040;
+	font-weight: normal;
+}
+
+.bodytext
+{
+	font-family: verdana;
+	font-size: 11px;
+	color: #000000;
+	font-weight: normal;
+}
+
+a.bodytext
+{
+	color: #0000FF;
+	text-decoration: underline;
+}
+
+a:hover.bodytext
+{
+	color: #FF8800;
+}
+
+.parahead
+{
+	font-family: verdana;
+	font-size: 11px;
+	color: #082A52;
+	font-weight: bold;
+}
+
+a.parahead
+{
+	text-decoration: none;
+}
+
+a:hover.parahead
+{
+	color: #FF8800;
+}
+
+.line
+{
+	border: 1px solid #082A52;
+}
+
+.sendbutton
+{
+	font-family: verdana;
+	font-size: 11px;
+	font-weight: bold;
+	background: #FFFFFF;
+	color: #082A52;
+	border-width: 1px;
+	border-style: solid;
+	width: 166px;
+	height: 20px;
+	cursor: pointer;
+	padding: 0px;
+}
+
+.sendbuttonover
+{
+	font-family: verdana;
+	font-size: 11px;
+	font-weight: bold;
+	background: #FFFFAA;
+	color: #082A52;
+	border-width: 1px;
+	border-style: solid;
+	width: 166px;
+	height: 20px;
+	cursor: pointer;
+	padding: 0px;
+}
+
+//-->
+</style>
+
+<script language="javascript" type="text/javascript">
+<!--
+
+	// returns the form element object
+	function getFormElement(elementName)
+	{
+		if (document.all) return document.all[elementName];
+		else if (document.getElementById) return document.getElementById(elementName);
+		return null;
+	}
+
+	// returns the value of the form element, or if not found, the defaultValue
+	function getFormElementValue(elementName, defaultValue)
+	{
+		var formElement = getFormElement(elementName);
+		return (((formElement) && (formElement.value)) ? formElement.value : defaultValue);
+	}
+
+	function changeClassName(obj, className)
+	{
+		obj.className = className;
+	}
+
+	var windowWidth = 560;
+	var windowHeight = 240;
+	var documentWidth = windowWidth - 10;
+	var documentHeight = windowHeight - 29;
+
+	function resizeWindow()
+	{
+		try
+		{
+			if ((document.body) && (document.documentElement)) return window.resizeBy(documentWidth - Math.max(document.documentElement.clientWidth, document.body.clientWidth), documentHeight - Math.max(document.documentElement.clientHeight, document.body.clientHeight));
+			var windowLeft = (screen.availWidth / 2) - (windowWidth / 2);
+			var windowTop = ((screen.availHeight / 2) - (windowHeight / 2)) / 1.5;
+			window.moveTo(((windowLeft <= 0) ? 10 : windowLeft), ((windowTop <= 0) ? 10 : windowTop));
+			window.resizeTo(windowWidth, windowHeight);
+		}
+		catch (e)
+		{
+		}
+	}
+
+	resizeWindow();
+
+	function onloadEventHandler()
+	{
+		resizeWindow();
+	}
+
+//-->
+</script>
+
+<body>
+
+<table width="520" border="0" cellpadding="10" cellspacing="0" bgcolor="#EBF0F1" class="line" style="position: absolute; top: 15px; left: 15px">
+<tr>
+<td>
+
+<table width="100%" border="0" cellpadding="5" cellspacing="0">
+
+<tr>
+<td class="titletext" colspan="3">Generates a valid licence key from the supplied information and copies the registration details to the windows clipboard...</td>
+</tr>
+
+<tr>
+<td class="bodytext">Name</td>
+<td><input id="username" name="username" type="text" class="bodytext" size="32" maxlength="64" value=""></td>
+<td class="bodytext">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="bodytext">Email</td>
+<td><input id="email" name="email" type="text" class="bodytext" size="32" maxlength="64" value=""></td>
+<td class="bodytext">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="bodytext">Expiry Date</td>
+<td><input id="expirydate" name="expirydate" type="text" class="bodytext" size="32" maxlength="10" value="" style="background-color: #EEEEEE" readonly></td>
+<td class="bodytext">&nbsp;</td>
+</tr>
+
+<tr>
+<td nowrap class="bodytext">Licence Key</td>
+<td><input id="licencekey" name="licencekey" type="text" class="bodytext" size="32" maxlength="24" value="" style="background-color: #EEEEEE" readonly></td>
+<td valign="top"><div align="right"><input type="button" class="sendbutton" onclick="generateLicenceKey(); return false;" onfocus="if (this.blur) this.blur();" onmouseover="changeClassName(this, 'sendbuttonover');" onmouseout="changeClassName(this, 'sendbutton');" value="Get Licence Key"></div></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<script language="javascript" type="text/javascript">
+<!--
+
+	var currentDate = new Date();
+	var todaysDay = currentDate.getDate();
+	var todaysMonth = currentDate.getMonth() + 1;
+	var todaysYear = currentDate.getFullYear();
+	if (todaysDay < 10) todaysDay = ("0" + todaysDay);
+	if (todaysMonth < 10) todaysMonth = ("0" + todaysMonth);
+	var expiryDateString = (todaysDay + "/" + todaysMonth + "/" + (todaysYear + 1));
+
+	// returns the character code for the ascii character (32-126)
+	function getCharCode(asciiCharacter)
+	{
+		if (asciiCharacter.charCodeAt) return asciiCharacter.charCodeAt(0);
+		var asciiCharacters = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+		for (var i = 0; i < asciiCharacters.length; i++) if (asciiCharacter == asciiCharacters.charAt(i)) return (i + 32);
+		return 0;
+	}
+
+	// converts a decimal to the hexadecimal string representation
+	function convertNumberToHexadecimalString(decimalNumber)
+	{
+		if (decimalNumber <= 15) return ("0" + decimalNumber.toString(16).toUpperCase());
+		else return decimalNumber.toString(16).toUpperCase();
+	}
+
+	// generate the licence key
+	function generateLicenceKey()
+	{
+		// get user inputs
+		var userName = getFormElementValue("username", "");
+		var userEmail = getFormElementValue("email", "");
+		var userLicenceKeyInput = getFormElement("licencekey");
+		if (!userLicenceKeyInput) return false;
+		userLicenceKeyInput.value = "";
+
+		// validate inputs
+		var errorMessage = "";
+		if ((!userName) || (userName.length <= 0)) errorMessage += "- Name\n";
+		if ((!userEmail) || (userEmail.length <= 0)) errorMessage += "- Email\n";
+		if (errorMessage)
+		{
+			alert("Unable to continue. The following information is required...\n\n" + errorMessage);
+			return false;
+		}
+
+		var encodedLicenceKey = "";
+		var decodedLicenceKey = new Array();
+		// base decryption key
+		decodedLicenceKey[0] = 0x00;
+		decodedLicenceKey[1] = 0x00;
+		decodedLicenceKey[2] = 0x00;
+		decodedLicenceKey[3] = 0x00;
+		// date (key generated)
+		decodedLicenceKey[4] = 0x00;
+		decodedLicenceKey[5] = 0x00;
+		decodedLicenceKey[6] = 0x00;
+		decodedLicenceKey[7] = 0x00;
+		// number of days - 0xFFFF for permanent keys
+		decodedLicenceKey[8] = 0xFF;
+		decodedLicenceKey[9] = 0xFF;
+		// crc of user information (name & email address)
+		decodedLicenceKey[10] = 0x00;
+		decodedLicenceKey[11] = 0x00;
+
+		var crcUserName = new Array(0, 0);
+		var crcUserEmail = new Array(0, 0);
+
+		for (var i = 0; i < userName.length; i++) crcUserName[i % 2] = ((getCharCode(userName.charAt(i)) + crcUserName[i % 2]) & 0xFF);
+		for (i = 0; i < userEmail.length; i++) crcUserEmail[i % 2] = ((getCharCode(userEmail.charAt(i)) + crcUserEmail[i % 2]) & 0xFF);
+
+		// store user information
+		var crcUserInformation = ((((crcUserName[1] << 8) + crcUserName[0]) + ((crcUserEmail[1] << 8) + crcUserEmail[0])) & 0xFFFF);
+		decodedLicenceKey[10] = (crcUserInformation & 0xFF);
+		decodedLicenceKey[11] = ((crcUserInformation >> 8) & 0xFF);
+
+		// store timestamp (when key was generated)
+		var currentTimestamp = parseInt(currentDate.getTime() / 1000, 10);
+		decodedLicenceKey[4] = (currentTimestamp & 0xFF);
+		decodedLicenceKey[5] = ((currentTimestamp >> 8) & 0xFF);
+		decodedLicenceKey[6] = ((currentTimestamp >> 16) & 0xFF);
+		decodedLicenceKey[7] = ((currentTimestamp >> 24) & 0xFF);
+
+		// expiry date (current time + number of days)
+		var expiryDate = (currentTimestamp + ((decodedLicenceKey[9] << 8) + (decodedLicenceKey[8])));
+
+		// starting crc
+		var startingCRC = (0x8393403C ^ (expiryDate + (crcUserInformation << 16)));
+
+		// store starting crc (group 1)
+		encodedLicenceKey = "";
+		encodedLicenceKey += convertNumberToHexadecimalString((startingCRC >> 24) & 0xFF);
+		encodedLicenceKey += convertNumberToHexadecimalString((startingCRC >> 16) & 0xFF);
+		encodedLicenceKey += convertNumberToHexadecimalString((startingCRC >> 8) & 0xFF);
+		encodedLicenceKey += convertNumberToHexadecimalString(startingCRC & 0xFF);
+
+		var encodedLicenceKeyArray = new Array();
+
+		// encode remaining key (groups 2 & 3)
+		for (i = 4; i <= 11; i++)
+		{
+			startingCRC = (((startingCRC * 0x0343FD) + 0x269EC3) & 0xFFFFFFFF);
+			encodedLicenceKeyArray[i - 4] = convertNumberToHexadecimalString(decodedLicenceKey[i] ^ ((startingCRC >> 0x10) & 0xFF));
+		}
+
+		// store encoded key groups
+		for (i = 3; i >= 0; i--) encodedLicenceKey += encodedLicenceKeyArray[i];
+		for (i = 7; i >= 4; i--) encodedLicenceKey += encodedLicenceKeyArray[i];
+
+		userLicenceKeyInput.value = encodedLicenceKey;
+		if (window.clipboardData) window.clipboardData.setData("Text", "User name: " + userName + ", Email address: " + userEmail + "\r\nLicense key: " + encodedLicenceKey);
+		return true;
+	}
+
+	// retrieves registrated information from the windows registry
+	function getRegistratedInformation()
+	{
+		var userNameInput = getFormElement("username");
+		var userEmailInput = getFormElement("email");
+		var expiryDateInput = getFormElement("expirydate");
+		if ((!userNameInput) || (!userEmailInput) || (!expiryDateInput)) return false;
+
+		// try Windows NT sub root and then Windows sub root
+		try
+		{
+			userNameInput.value = objWshShell.RegRead("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\RegisteredOwner");
+			userEmailInput.value = objWshShell.RegRead("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\RegisteredOrganization");
+		}
+		catch(ex)
+		{
+			try
+			{
+				userNameInput.value = objWshShell.RegRead("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RegisteredOwner");
+				userEmailInput.value = objWshShell.RegRead("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RegisteredOrganization");
+			}
+			catch (ex)
+			{
+			}
+		}
+
+		expiryDateInput.value = expiryDateString;
+		return true;
+	}
+
+	var objWshShell = new ActiveXObject("WScript.Shell");
+	getRegistratedInformation();
+
+//-->
+</script>
+
+</body>
+</html>

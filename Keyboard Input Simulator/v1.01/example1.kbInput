@@ -1,0 +1,11 @@
+#kbInput Script
+
+ScriptName=Example kbInput Script (1)
+InitialDelay=3000
+
+[Input Script]
+Label=L_START
+Send=A 6
+Send={ENTER}
+Sleep=500
+RepeatUntil=Count 3 L_START
