@@ -1,0 +1,13 @@
+Norton Internet Security URL List Decryption Utility
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  nisUrlList <encrypted url list database file> [/decryptURLs]
+
+<encrypted url list database file>
+
+   the encrypted database used by the parental controls (urllists)
+
+/decryptURLs
+
+   decrypts the database into the different url categories

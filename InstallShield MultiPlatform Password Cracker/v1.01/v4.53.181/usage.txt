@@ -1,0 +1,5 @@
+InstallShield MultiPlatform4 Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage : java -cp ISmp4.jar;<installation package> run

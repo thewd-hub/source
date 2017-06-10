@@ -1,0 +1,16 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nisUrlList", "nisUrlList.vcproj", "{2FE1D7EE-72AD-4C7B-AAB5-FF957ECA58ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FE1D7EE-72AD-4C7B-AAB5-FF957ECA58ED}.Release|Win32.ActiveCfg = Release|Win32
+		{2FE1D7EE-72AD-4C7B-AAB5-FF957ECA58ED}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

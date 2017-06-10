@@ -1,0 +1,21 @@
+CentaMeter File Information
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage  : cmInfo [options]
+Options:
+
+/decryptLog <log filename> [/dumpRaw]
+
+   decrypt the specified log filename (specify /dumpRaw to disable formatting)
+   e.g. /decryptLog 20020801.log /dumpRaw
+
+/decryptLicence <licence filename>
+
+   decrypt the specified licence filename
+   e.g. /decryptLicence msoffice.lic
+
+/decryptQueue <queue filename>
+
+   decrypt the specified queue filename
+   e.g. /decryptQueue msoffice.que

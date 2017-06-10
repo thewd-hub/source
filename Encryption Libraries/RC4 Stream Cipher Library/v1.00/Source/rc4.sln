@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rc4", "rc4.vcproj", "{97629F55-9355-4535-BCDA-B9EAE2DF8A7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|Win32 = Release|Win32
+		ReleaseMultithreaded|Win32 = ReleaseMultithreaded|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97629F55-9355-4535-BCDA-B9EAE2DF8A7E}.Release|Win32.ActiveCfg = Release|Win32
+		{97629F55-9355-4535-BCDA-B9EAE2DF8A7E}.Release|Win32.Build.0 = Release|Win32
+		{97629F55-9355-4535-BCDA-B9EAE2DF8A7E}.ReleaseMultithreaded|Win32.ActiveCfg = ReleaseMultithreaded|Win32
+		{97629F55-9355-4535-BCDA-B9EAE2DF8A7E}.ReleaseMultithreaded|Win32.Build.0 = ReleaseMultithreaded|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

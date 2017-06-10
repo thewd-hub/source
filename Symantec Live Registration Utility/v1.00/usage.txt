@@ -1,0 +1,17 @@
+Symantec Live Registration Utility
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage  : symLiveReg <live registration filename> [/dumpFile]
+
+<live registration filename>
+
+   the file that contains the registration information (MyProfile.UserProfile)
+
+/dumpFile
+
+   dump the live registration file contents
+
+------------------------------------------------------------------------------
+
+Note: Supports products that use Live Registration (Norton SystemWorks 2000+)

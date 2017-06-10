@@ -1,0 +1,9 @@
+Symantec Decryption Utility
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage  : symDecrypt <supported file> [/encrypt]
+
+<supported file>
+
+   the supported file to decrypt (default action) or encrypt

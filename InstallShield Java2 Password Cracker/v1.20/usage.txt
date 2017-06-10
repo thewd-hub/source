@@ -1,0 +1,46 @@
+InstallShield Java2 Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  ISjava2 [-bruteforce <start> <end> <charset> <required crc>]
+                [-intelliforce <start> <end> <charset> <tolerance level> <crc>]
+                [-dictionary <dictionary filename> <required crc>]
+                [-single <password> <required crc>]
+                [-benchmark]
+
+-bruteforce <start> <end> <charset> <required crc>
+
+   start the bruteforce search for the password
+   <start> - start length
+   <end> - end length
+   <charset> - A (uppercase), a (lowercase), 1 (numbers), ! (special)
+   <required crc> - password crc value
+   e.g. -bruteforce 1 4 aA 921706249
+
+-intelliforce <start> <end> <charset> <tolerance level> <crc>
+
+   start the intelliforce search (based on character frequencies)
+   <start> - start length
+   <end> - end length
+   <charset> - A (uppercase), a (lowercase)
+   <tolerance level> - level of tolerance for valid words (1 - 12)
+   <required crc> - password crc value
+   e.g. -intelliforce 4 4 aA 1 921706249
+
+-dictionary <dictionary filename> <required crc>
+
+   searches the specified dictionary for a match with the crc value
+   <dictionary filename> - filename of the dictionary wordlist
+   <required crc> - password crc value
+   e.g. -dictionary allwords.txt 921706249
+
+-single <password> <required crc>
+
+   checks a single password against the crc value for a valid match
+   <password> - password to check
+   <required crc> - password crc value
+   e.g. -single test 921706249
+
+-benchmark
+
+   performs the password search benchmark test (using bruteforce engine)

@@ -1,0 +1,5 @@
+InstallAnywhere Enterprise Edition Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage : java -cp IAee.jar;<installation package> install

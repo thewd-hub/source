@@ -1,0 +1,5 @@
+InstallShield MultiPlatform5 Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage : java -cp ISmp5.jar;<installation package> run

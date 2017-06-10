@@ -1,0 +1,62 @@
+Execute Module
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage  : executeModule <required parameters> [<function arguments>]
+Options:
+
+[Required Parameters]
+
+-moduleName=<module filename>
+
+   the name of the module filename
+   e.g. -moduleName=returnModule.dll
+
+-exportFunction=<export function name>
+
+   the export function to execute (by name or hexadecimal ordinal)
+   e.g. -exportFunction=returnValue
+        -exportFunction=0x12
+
+-returnValue=<VOID|STRING|DWORD|LPDWORD|BOOL>
+
+   the expected value type returned from executing the above function
+   e.g. -returnValue=BOOL
+
+[Function Arguments]
+
+-argNULL
+
+   pass an argument to the function - NULL
+   e.g. -argNULL
+
+-argSTRING=<string argument>
+
+   pass an argument to the function - STRING
+   e.g. -argSTRING=helloworld
+
+-argDWORD=<dword argument>
+
+   pass an argument to the function - DWORD
+   e.g. -argDWORD=0x1234
+
+-argLPDWORD=<dword argument>
+
+   pass an argument to the function - LPDWORD
+   e.g. -argLPDWORD=0x1234
+
+-argBOOL=<bool argument - TRUE|FALSE>
+
+   pass an argument to the function - BOOL
+   e.g. -argBOOL=TRUE
+
+-argFILEHANDLE=<filename>
+
+   pass an argument to the function - FILE HANDLE
+   e.g. -argFILEHANDLE=test.txt
+
+[Optional Parameters]
+
+-breakpoint
+
+   fire a breakpoint before passing the arguments and executing the function

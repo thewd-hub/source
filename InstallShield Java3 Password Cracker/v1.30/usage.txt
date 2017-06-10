@@ -1,0 +1,5 @@
+InstallShield Java3 Password Cracker
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage:  java -jar ISjava3.jar <java3 archive>

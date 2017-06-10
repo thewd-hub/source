@@ -1,0 +1,20 @@
+Symantec Live Subscription Utility
+(C)thewd@hotmail.com
+------------------------------------------------------------------------------
+
+Usage  : symLiveSub [<live subscription catalog> | /registry]
+
+<live subscription catalog>
+
+   the file that contains the subscription serivces (Catalog.LiveSubscribe)
+   (Live Subscribe v2.00 - v3.00)
+
+/registry
+
+   scans the registry for live subscription services
+   (Live Subscribe v1.00)
+
+------------------------------------------------------------------------------
+
+Note: Supports products that use the Symantec Live Subscribe modules
+      (i.e. Norton AntiVirus 2000+ / Norton Internet Security 2000+)
